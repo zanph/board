@@ -12,13 +12,13 @@ describe('<Comment />', () => {
   });
 
   it('has an author', () => {
-    expect(wrapper.find('h2').first().text())
-        .to.exist();
+    expect(wrapper.find('h2').first())
+        .to.not.equal('');
   });
 
   it('isn\'t empty', () => {
       expect(wrapper.find('span').first().text())
-        .to.exist();
+        .to.not.equal('');
   });
 
 })

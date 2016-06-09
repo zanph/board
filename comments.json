@@ -8,5 +8,25 @@
         "id": 2,
         "author": "Jordan Walke",
         "text": "This is *another* comment"
+    },
+    {
+        "id": 1465432173490,
+        "author": "abc",
+        "text": "*hello*"
+    },
+    {
+        "id": 1465432186941,
+        "author": "xyz",
+        "text": "`code snippet`"
+    },
+    {
+        "id": 1465501664684,
+        "author": "abc",
+        "text": "xyz"
+    },
+    {
+        "id": 1465501707522,
+        "author": "hello",
+        "text": "**world**"
     }
 ]

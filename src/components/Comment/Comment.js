@@ -5,7 +5,7 @@ import styles from './styles.module.css';
 import marked from 'marked'
 export class Comment extends React.Component {
 
-   rawMarkup = () => {
+   rawMarkup () {
       let raw = marked(this.props.children.toString(), {sanitize: true});
       return { __html: raw};
    }
