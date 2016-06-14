@@ -24,10 +24,6 @@ export class Container extends React.Component {
               c => React.cloneElement(c, childProps));
   }
   render() {
-    //  var data = [
-    //    {id: 1, author: "Pete Hunt", text: "This is one comment"},
-    //    {id: 2, author: "Jordan Walke", text: "This is *another* comment"}
-    //  ];
     return (
       <div className={styles.wrapper}>
         <Header title="board" />

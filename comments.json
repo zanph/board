@@ -10,23 +10,13 @@
         "text": "This is *another* comment"
     },
     {
-        "id": 1465432173490,
+        "id": 3,
         "author": "abc",
-        "text": "*hello*"
+        "text": "```python \nfor item in list:\n\tprint item\n```"
     },
     {
-        "id": 1465432186941,
-        "author": "xyz",
-        "text": "`code snippet`"
-    },
-    {
-        "id": 1465501664684,
-        "author": "abc",
-        "text": "xyz"
-    },
-    {
-        "id": 1465501707522,
+        "id": 1465599322415,
         "author": "hello",
-        "text": "**world**"
+        "text": "test test test"
     }
 ]
