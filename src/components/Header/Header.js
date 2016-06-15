@@ -14,7 +14,7 @@ export class Header extends React.Component {
           pre alpha
         </section>
       </div>
-    )
+    );
   }
 }
 
