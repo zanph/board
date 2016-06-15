@@ -12,14 +12,15 @@
     "test:watch": "npm run test -- --watch"
   },
   "author": "Preston Hansen <prestonhansen01@gmail.com>",
-  "license": "ISC",
+  "license": "GPL-3.0",
   "dependencies": {
     "classnames": "^2.2.5",
     "font-awesome": "^4.6.3",
     "jquery": "^2.2.4",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
-    "react-router": "^2.4.1"
+    "react-router": "^2.4.1",
+    "remarkable": "^1.6.2"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
@@ -40,6 +41,7 @@
     "enzyme": "^2.3.0",
     "expect": "^1.20.1",
     "file-loader": "^0.8.5",
+    "highlight.js": "^9.4.0",
     "hjs-webpack": "^8.2.0",
     "jasmine-core": "^2.4.1",
     "json-loader": "^0.5.4",

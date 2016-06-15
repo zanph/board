@@ -7,6 +7,13 @@ import Sidebar    from 'components/Sidebar/Sidebar'
 import styles from './styles.module.css'
 
 export class Container extends React.Component {
+  // onTabClick(item) {
+  //      const {push} = this.context.router;
+  //      //todo: setup routing for arbitrary tabs
+  //      push(`/m/${abcxyz}`);
+  //      //make sure onTabClick is passed to the child component necessary.
+  //   }
+  
   renderChildren() {
     const childProps = {
       ...this.props
@@ -17,10 +24,6 @@ export class Container extends React.Component {
               c => React.cloneElement(c, childProps));
   }
   render() {
-    //  var data = [
-    //    {id: 1, author: "Pete Hunt", text: "This is one comment"},
-    //    {id: 2, author: "Jordan Walke", text: "This is *another* comment"}
-    //  ];
     return (
       <div className={styles.wrapper}>
         <Header title="board" />

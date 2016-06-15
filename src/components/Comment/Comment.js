@@ -1,13 +1,17 @@
 import React, { PropTypes as T } from 'react'
 //import {Link} from 'react-router'
-
+import ReactDOM from 'react-dom'
+import Remarkable from 'Remarkable'
 import styles from './styles.module.css';
-import marked from 'marked'
+
+import highlightjs from 'highlight.js'
+
 export class Comment extends React.Component {
 
-   rawMarkup = () => {
-      let raw = marked(this.props.children.toString(), {sanitize: true});
-      return { __html: raw};
+   rawMarkup () {
+     let md = new Remarkable(); 
+     let raw = md.render(this.props.children.toString(), {sanitize: true});
+     return { __html: raw};
    }
    render() {
       return(
@@ -22,9 +26,3 @@ export class Comment extends React.Component {
 
 }
 export default Comment
-// <div className="comment">
-//    <h2 className="commentAuthor">
-//       {this.props.author}
-//    </h2>
-//    {this.props.children}
-// </div>
