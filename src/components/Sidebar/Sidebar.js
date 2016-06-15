@@ -12,8 +12,8 @@ export class Sidebar extends React.Component {
       <div className={styles.sidebar}>
          <div className={styles.heading}>
 	      <h1>{this.props.title}</h1>
-		  <TabList />
 	    </div>
+		  <TabList tabs={["tab","other tab"]}/>
 	   </div>
 	);
     }
