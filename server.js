@@ -17,6 +17,7 @@ var bodyParser = require('body-parser');
 var app = express();
 
 var COMMENTS_FILE = path.join(__dirname, 'comments.json');
+var TABS_FILE     = path.join(__dirname, 'tabs.json');
 
 app.set('port', (process.env.PORT || 3001));
 
@@ -67,6 +68,41 @@ app.post('/api/comments', function(req, res) {
         process.exit(1);
       }
       res.json(comments);
+    });
+  });
+});
+
+app.get('/api/tabs', function(req, res) {
+  fs.readFile(TABS_FILE, function(err, data) {
+    if (err) {
+      console.error(err);
+      process.exit(1);
+    }
+    res.json(JSON.parse(data));
+  });
+});
+
+app.post('/api/tabs', function(req, res) {
+  fs.readFile(TABS_FILE, function(err, data) {
+    if (err) {
+      console.error(err);
+      process.exit(1);
+    }
+    var tabs = JSON.parse(data);
+    // NOTE: In a real implementation, we would likely rely on a database or
+    // some other approach (e.g. UUIDs) to ensure a globally unique id. We'll
+    // treat Date.now() as unique-enough for our purposes.
+    var newTab = {
+      id: Date.now(),
+      name: req.body.name
+    };
+    tabs.push(newTab);
+    fs.writeFile(TABS_FILE, JSON.stringify(tabs, null, 4), function(err) {
+      if (err) {
+        console.error(err);
+        process.exit(1);
+      }
+      res.json(tabs);
     });
   });
 });
