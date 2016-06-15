@@ -1,5 +1,6 @@
 import React, { PropTypes as T } from 'react'
 import classnames from 'classnames'
+import $ from 'jquery'
 
 import TabList from 'components/TabList/TabList'
 import TabForm from 'components/TabForm/TabForm'
@@ -23,10 +24,35 @@ export class TabBox extends React.Component {
         /*todo: make server request and set tabs here*/
         //make server request
         //if there's an error, reset the state
+        $.ajax({
+            url: this.props.url,
+            dataType: 'json',
+            type: 'POST',
+            data: newTab,
+            success: function(data){
+                this.setState({tabs: data});
+            }.bind(this),
+            error: function(xhr, status, err){
+                //if something went wrong, set the state so the comments reflect
+                //what's actually on the server.
+                this.setState({data: oldTabs});
+                console.error(this.props.url, status, err.toString());
+            }
+     });
     }
     
     loadTabsFromServer () {
-        //todo//
+      $.ajax({
+         url: this.props.url,
+         dataType: 'json',
+         cache: false,
+         success: function(data) {
+            this.setState({tabs: data});
+         }.bind(this),
+         error: function(xhr, status, err) {
+            console.error(this.props.url, status, err.toString());
+         }.bind(this)
+      });    
     }
 
    componentDidMount () {
