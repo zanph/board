@@ -8,8 +8,6 @@ import styles from './styles.module.css'
 
 export class TabList extends React.Component {
 
-
-
     render () {
     //for each tab passed in by tablist, do something
     //tabs is a list of objects like {name: "name"}

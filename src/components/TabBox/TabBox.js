@@ -17,11 +17,11 @@ export class TabBox extends React.Component {
     }
     handleNewTab (newTab) {
         let oldTabs = this.state.tabs;
-        let newTabs = oldTabs.concat([newTab]);
         newTab.id = Date.now();
+        newTab.comments = [];
+        let newTabs = oldTabs.concat([newTab]);
         //we'll be optimistic and show the new tab before the server sees it
         this.setState({tabs : newTabs});
-        /*todo: make server request and set tabs here*/
         //make server request
         //if there's an error, reset the state
         $.ajax({

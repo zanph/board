@@ -37,37 +37,90 @@ app.use(function(req, res, next) {
 });
 
 app.get('/api/comments', function(req, res) {
-  fs.readFile(COMMENTS_FILE, function(err, data) {
+  const tabName = req.query.tabName;
+  console.log(tabName);
+  var tabs;
+  fs.readFile(TABS_FILE, function(err, data) {
     if (err) {
       console.error(err);
       process.exit(1);
     }
-    res.json(JSON.parse(data));
+    tabs = JSON.parse(data);
+    console.log(JSON.stringify(tabs));
+    //look for the tab by name
+    let found = false;
+    for(let i=0; i < tabs.length; ++i) {
+      console.log(tabs[i].name);
+      if(tabs[i].name === tabName) {
+        found = true;
+        console.log(tabs[i].comments);
+        res.json(tabs[i].comments);
+      }
+    }
+    if (!found) {
+      //if we didnt find the tab (usually when opening for the first time), create it
+      //with no comments
+      console.log('tab not found');
+      tempTab = {"id":Date.now(), "name":tabName, "comments":[]};
+      console.log('tabs: \n');
+      console.log(JSON.stringify(tabs));
+      tabs.push(tempTab);
+      console.log('new tabs: \n');
+      console.log(JSON.stringify(tabs));
+      fs.writeFile(TABS_FILE, JSON.stringify(tabs, null, 4), function(err) {
+        if (err) {
+          console.error(err);
+          process.exit(1);
+        }
+        res.json(tabs);
+      });
+    }
   });
 });
 
 app.post('/api/comments', function(req, res) {
-  fs.readFile(COMMENTS_FILE, function(err, data) {
+  let tabs;
+  const tabName = req.body.tabName;
+  fs.readFile(TABS_FILE, function(err, data) {
     if (err) {
       console.error(err);
       process.exit(1);
     }
-    var comments = JSON.parse(data);
-    // NOTE: In a real implementation, we would likely rely on a database or
-    // some other approach (e.g. UUIDs) to ensure a globally unique id. We'll
-    // treat Date.now() as unique-enough for our purposes.
-    var newComment = {
-      id: Date.now(),
-      author: req.body.author,
-      text: req.body.text,
-    };
-    comments.push(newComment);
-    fs.writeFile(COMMENTS_FILE, JSON.stringify(comments, null, 4), function(err) {
+    tabs = JSON.parse(data);
+    let found = false;
+    var result;
+    for(let i=0; i < tabs.length; ++i){
+      if(tabs[i].name === tabName) {
+        found = true;
+        // NOTE: In a real implementation, we would likely rely on a database or
+        // some other approach (e.g. UUIDs) to ensure a globally unique id. We'll
+        // treat Date.now() as unique-enough for our purposes.
+        var newComment = {
+          id: Date.now(),
+          author: req.body.comment.author,
+          text: req.body.comment.text,
+        };
+        tabs[i].comments.push(newComment);
+        result = tabs[i].comments;
+      }
+    }
+    if(!found){
+      tempTab = {"id":Date.now(), "name":tabName, "comments":[]};
+      tabs.push(tempTab);
+      fs.writeFile(TABS_FILE, JSON.stringify(tabs, null, 4), function(err) {
+        if (err) {
+          console.error(err);
+          process.exit(1);
+        }
+      res.json([]);
+      });
+    }
+    fs.writeFile(TABS_FILE, JSON.stringify(tabs, null, 4), function(err) {
       if (err) {
         console.error(err);
         process.exit(1);
       }
-      res.json(comments);
+      res.json(result);
     });
   });
 });
@@ -88,13 +141,14 @@ app.post('/api/tabs', function(req, res) {
       console.error(err);
       process.exit(1);
     }
-    var tabs = JSON.parse(data);
+    let tabs = JSON.parse(data);
     // NOTE: In a real implementation, we would likely rely on a database or
     // some other approach (e.g. UUIDs) to ensure a globally unique id. We'll
     // treat Date.now() as unique-enough for our purposes.
-    var newTab = {
+    let newTab = {
       id: Date.now(),
-      name: req.body.name
+      name: req.body.name,
+      comments: []
     };
     tabs.push(newTab);
     fs.writeFile(TABS_FILE, JSON.stringify(tabs, null, 4), function(err) {

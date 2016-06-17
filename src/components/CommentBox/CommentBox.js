@@ -12,13 +12,15 @@ export class CommentBox extends React.Component {
      super(props);
 
      this.state = {
-        data : []
+        data : [],
+        tab  : 'chat'
         }
    }
 
    handleCommentSubmit (comment) {
      //TODO/FIX: remove jquery dependnecy and use fetch() 
      let comments = this.state.data;
+     
      //use optimistic updating to id the comment now (this will be replaced)
      //and display to the user.
      comment.id = Date.now();
@@ -29,7 +31,7 @@ export class CommentBox extends React.Component {
        url: this.props.url,
        dataType: 'json',
        type: 'POST',
-       data: comment,
+       data: {comment: comment, tabName: this.state.tab},
        success: function(data){
          this.setState({data: data});
        }.bind(this),
@@ -45,6 +47,7 @@ export class CommentBox extends React.Component {
    loadCommentsFromServer () {
       $.ajax({
          url: this.props.url,
+         data: {tabName: this.state.tab},
          dataType: 'json',
          cache: false,
          success: function(data) {
