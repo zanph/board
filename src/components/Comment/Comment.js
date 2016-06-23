@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 import Remarkable from 'Remarkable'
 import styles from './styles.module.css';
 
-import highlightjs from 'highlight.js'
+//import highlightjs from 'highlight.js'
 
 export class Comment extends React.Component {
 
