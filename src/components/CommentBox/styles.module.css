@@ -12,6 +12,8 @@
 
   flex: 1;
   order: 1;
+
+  background: #fff;
 }
 /*.wrapper {
   overflow-y: scroll;
