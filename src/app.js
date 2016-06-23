@@ -15,7 +15,6 @@ const routes = makeRoutes()
 
 const mountNode = document.querySelector('#root');
 ReactDOM.render(
-<Button>default</Button>,
+<App history={hashHistory}
+        routes={routes} />,
 mountNode);
-// <App history={hashHistory}
-//         routes={routes} />,
