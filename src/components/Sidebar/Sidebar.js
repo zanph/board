@@ -13,7 +13,8 @@ export class Sidebar extends React.Component {
 	      <h1>{this.props.title}</h1>
 	     </div>
 		  <TabBox pollInterval={1800}
-           url="http://localhost:3001/api/tabs"/>
+           url="http://localhost:3001/api/tabs"
+		   onTabClick={this.props.onTabClick.bind(this)}/>
 	   </div>
 	);
     }

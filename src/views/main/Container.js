@@ -7,12 +7,22 @@ import Sidebar    from 'components/Sidebar/Sidebar'
 import styles from './styles.module.css'
 
 export class Container extends React.Component {
-  // onTabClick(item) {
-  //      const {push} = this.context.router;
-  //      //todo: setup routing for arbitrary tabs
-  //      push(`/m/${abcxyz}`);
-  //      //make sure onTabClick is passed to the child component necessary.
-  //   }
+  constructor(props){
+   	super(props);
+
+   	this.state = {
+       tab : 'chat'
+     }
+    
+  }
+  onTabClick(tab) {
+    /* when a tab is clicked, we push to a new view (of its comments) */
+    //const {push} = this.context.router
+    console.log(tab);
+    this.setState({tab: tab.props.name});
+    //push(`/m/${tab.id}`);
+    //make sure onTabClick is passed to the child component necessary.
+    }
   
   renderChildren() {
     const childProps = {
@@ -27,12 +37,13 @@ export class Container extends React.Component {
     return (
       <div className={styles.wrapper}>
         <Header title="board" />
-        <Sidebar title="sidebar" />
+        <Sidebar title="sidebar" onTabClick={this.onTabClick.bind(this)}/>
         <div className={styles.content}>
           {this.renderChildren()}
         </div>
         <CommentBox pollInterval={1800}
-           url="http://localhost:3001/api/comments"/>
+           url="http://localhost:3001/api/comments"
+           tab={this.state.tab}/>
       </div>
     )
   }

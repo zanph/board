@@ -37,6 +37,10 @@ app.use(function(req, res, next) {
 });
 
 app.get('/api/comments', function(req, res) {
+  /*
+  *  This API endpoint is used to get the comments for a given tab
+  */
+  //retrieve the tab name from the URL query
   const tabName = req.query.tabName;
   console.log(tabName);
   var tabs;
@@ -45,6 +49,7 @@ app.get('/api/comments', function(req, res) {
       console.error(err);
       process.exit(1);
     }
+    //parse tabs from the TABS_FILE
     tabs = JSON.parse(data);
     console.log(JSON.stringify(tabs));
     //look for the tab by name
@@ -54,6 +59,7 @@ app.get('/api/comments', function(req, res) {
       if(tabs[i].name === tabName) {
         found = true;
         console.log(tabs[i].comments);
+        //if we found the tab, return its comments
         res.json(tabs[i].comments);
       }
     }
@@ -61,18 +67,21 @@ app.get('/api/comments', function(req, res) {
       //if we didnt find the tab (usually when opening for the first time), create it
       //with no comments
       console.log('tab not found');
+      //initialize a new tab
       tempTab = {"id":Date.now(), "name":tabName, "comments":[]};
-      console.log('tabs: \n');
-      console.log(JSON.stringify(tabs));
+      //add it to the current tab list
       tabs.push(tempTab);
       console.log('new tabs: \n');
       console.log(JSON.stringify(tabs));
+      //write the new tabs to TABS_FILE
       fs.writeFile(TABS_FILE, JSON.stringify(tabs, null, 4), function(err) {
         if (err) {
           console.error(err);
           process.exit(1);
         }
-        res.json(tabs);
+        //return an empty list object (the new comment list), equivalent to
+        //res.json(tabs[tabs.length].comments)
+        res.json([]);
       });
     }
   });
@@ -105,14 +114,14 @@ app.post('/api/comments', function(req, res) {
       }
     }
     if(!found){
-      tempTab = {"id":Date.now(), "name":tabName, "comments":[]};
+      tempTab = {"id":Date.now(), "name":tabName, "comments":[comment]};
       tabs.push(tempTab);
       fs.writeFile(TABS_FILE, JSON.stringify(tabs, null, 4), function(err) {
         if (err) {
           console.error(err);
           process.exit(1);
         }
-      res.json([]);
+      res.json(tempTab.comments);
       });
     }
     fs.writeFile(TABS_FILE, JSON.stringify(tabs, null, 4), function(err) {

@@ -13,7 +13,7 @@ export class TabList extends React.Component {
     //tabs is a list of objects like {name: "name"}
     let tabs = this.props.tabs.map(tab => {
         return(
-            <Tab name={tab.name} key={tab.id} />
+            <Tab name={tab.name} key={tab.id} onTabClick={this.props.onTabClick.bind(this)}/>
         );
     });
     //render the tabs with a temp heading

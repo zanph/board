@@ -12,8 +12,8 @@ export class CommentBox extends React.Component {
      super(props);
 
      this.state = {
-        data : [],
-        tab  : 'chat'
+        data : []
+        //tab  : 'chat'
         }
    }
 
@@ -31,7 +31,7 @@ export class CommentBox extends React.Component {
        url: this.props.url,
        dataType: 'json',
        type: 'POST',
-       data: {comment: comment, tabName: this.state.tab},
+       data: {comment: comment, tabName: this.props.tab},
        success: function(data){
          this.setState({data: data});
        }.bind(this),
@@ -45,9 +45,10 @@ export class CommentBox extends React.Component {
    }
 
    loadCommentsFromServer () {
+     console.log(this.props.tab);
       $.ajax({
          url: this.props.url,
-         data: {tabName: this.state.tab},
+         data: {tabName: this.props.tab},
          dataType: 'json',
          cache: false,
          success: function(data) {
@@ -63,10 +64,11 @@ export class CommentBox extends React.Component {
       this.loadCommentsFromServer();
       setInterval(this.loadCommentsFromServer.bind(this), this.props.pollInterval);
    }
+
    render() {
      return(
         <div className={styles.content}>
-         <h1 className={styles.padding}>Comments</h1>
+         <h1 className={styles.padding}>Comments for tab: {this.props.tab}</h1>
          <CommentList data={this.state.data} />
          <CommentForm onCommentSubmit={this.handleCommentSubmit.bind(this)} />
         </div>
