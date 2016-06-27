@@ -1,7 +1,8 @@
 import React, { PropTypes as T } from 'react'
 //import {Link} from 'react-router'
 
-import styles from './styles.module.css';
+import styles from './styles.module.css'
+import { FormGroup, FormControl, InputGroup, Button } from 'react-bootstrap'
 
 export class CommentForm extends React.Component{
    constructor(props){
@@ -32,16 +33,30 @@ export class CommentForm extends React.Component{
 
    render () {
       return(
-         <form className="commentForm" onSubmit={this.handleSubmit.bind(this)}>
-            <input type="text"
+         <form className={styles.commentForm} onSubmit={this.handleSubmit.bind(this)}>
+          <FormGroup controlId="commentEntry">
+            <FormControl type="text"
                placeholder="Your Name"
                value={this.state.author}
-               onChange={this.handleAuthorChange.bind(this)} />
-            <input type="text"
-               placeholder="Say Something..."
-               value={this.state.text}
-               onChange={this.handleTextChange.bind(this)} />
-            <input type="submit" value="Post" />
+               onChange={this.handleAuthorChange.bind(this)} 
+               />
+            <InputGroup>
+                <InputGroup.Button>
+                  <Button bsStyle="info">Toggle code</Button>
+                </InputGroup.Button>
+              <FormControl type="text"
+                value={this.state.text}
+                placeholder="Say something (with markdown!)"
+                onChange={this.handleTextChange.bind(this)}
+                />
+                <InputGroup.Button>
+                  <Button bsStyle="primary" type="submit" value="Post">
+                    Post
+                  </Button>
+                </InputGroup.Button>
+           </InputGroup>
+
+          </FormGroup>
          </form>
       );
    }

@@ -1,22 +1,25 @@
 @import url("../../styles/base.css");
 
 .sidebar {
-    height: 100%;
-    top: var(--topbar-height);
-    left: 0;
-    overflow: hidden;
+  float: left;
+  height: 100%;
+  width: var(--sidebar-width);
+  top: var(--topbar-height);
+  left: 0;
+  overflow: hidden;
 
-    position: relative;
-    flex: 1;
-    z-index: 0;
+  margin-right: 8px;
+  position: absolute;
 
-    .heading {
+  background: var(--sidebar-color);
+  box-shadow: 2px 0px 5px #888888;
+}
+.sidebar .heading {
 	flex: 1;
-	background: #fff;
-	border-bottom: 1px solid #eee;
+	border-bottom: 2px solid #eee;
 	padding: 0 10px;
-	h1 {
-	    font-size: 1.8em;
-	}
-    }
+  color: white
+}
+.sidebar .heading h1 {
+    font-size: 1.8em;
 }

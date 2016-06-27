@@ -61,7 +61,7 @@ export class TabBox extends React.Component {
    }
    render () {
        return (
-           <div className={styles.tabBox}>
+           <div className={styles.content}>
             <h2> i'm the tab box. i contain the tab list </h2>
             <TabList tabs={this.state.tabs} onTabClick={this.props.onTabClick.bind(this)} />
             <TabForm onTabSubmit={this.handleNewTab.bind(this)} />

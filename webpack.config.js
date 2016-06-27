@@ -1,136 +1,91 @@
+/*not used yet, but will be for deployment and testing*/
 const NODE_ENV = process.env.NODE_ENV;
-const dotenv = require('dotenv');
+const isDev = NODE_ENV === "development";
+const isTest = NODE_ENV === "test";
+/******************************************************/
 
-const webpack = require('webpack');
 const path = require('path');
+const webpack = require('webpack');
 
-const join = path.join;
+const join = path.join; 
 const resolve = path.resolve;
-
-const getConfig = require('hjs-webpack');
-
-const isDev = NODE_ENV === 'development';
-const isTest = NODE_ENV === 'test';
 
 const root = resolve(__dirname);
 const src = join(root, 'src');
 const modules = join(root, 'node_modules');
 const dest = join(root, 'dist');
 
-//const marked = require('marked');
+module.exports = {
+  entry: './src/app.js',
+  output: { path: __dirname, filename: 'bundle.js' },
+  module: {
+    loaders: [
+      {
+        test: /.jsx?$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        query: {
+          presets: ['babel-preset-es2015', 'babel-preset-react', 'babel-preset-stage-0'].map(require.resolve)
+        }
+      },
+      {
+        test: /\.module\.css$/,
+        include: [src],
+        loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
+      },
+      // for css in node_modules
+      { 
+        test: /\.css$/,
+        include: [modules], 
+        loader: "style-loader!css-loader" 
+      },
+      //for non-css module support
+      {
+        test: /[^module]\.css$/,
+        loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
+      },
+      //css module support
+      { 
+        test: /\.png$/, 
+        loader: "url-loader?limit=100000" 
+      },
+      { 
+        test: /\.jpg$/, 
+        loader: "file-loader" 
+      },
+      {
+        test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/, 
+        loader: 'url?limit=10000&mimetype=application/font-woff'
+      },
+      {
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, 
+        loader: 'url?limit=10000&mimetype=application/octet-stream'
+      },
+      {
+        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, 
+        loader: 'file'
+      },
+      {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, 
+        loader: 'url?limit=10000&mimetype=image/svg+xml'
+      }
+    ]
+  },
 
-var config = getConfig({
-  isDev: isDev,
-  in: join(src, 'app.js'),
-  out: dest,
-  html: function (context) {
-    return {
-      'index.html': context.defaultTemplate({
-        title: 'board',
-        publicPath: isDev ? 'http://localhost:3000/' : '',
-        meta: {}
-      })
-    };
+  postcss : [
+    require('precss')({}),
+    require('autoprefixer')({}),
+    require('cssnano')({})
+  ],
+
+  resolve: {
+    root: [src, modules],
+    alias: {
+      css: join(src, 'styles'),
+      containers: join(src, 'containers'),
+      components: join(src, 'components'),
+      utils: join(src, 'utils'),
+      styles: join(src, 'styles')
+    }
   }
-});
-
-// ENV variables
-const dotEnvVars = dotenv.config();
-const environmentEnv = dotenv.config({
-  path: join(root, 'config', `${NODE_ENV}.config.js`),
-  silent: true
-});
-const envVariables =
-    Object.assign({}, dotEnvVars, environmentEnv);
-
-const defines =
-  Object.keys(envVariables)
-  .reduce((memo, key) => {
-    const val = JSON.stringify(envVariables[key]);
-    memo[`__${key.toUpperCase()}__`] = val;
-    return memo;
-  }, {
-    __NODE_ENV__: JSON.stringify(NODE_ENV),
-    __DEBUG__: isDev
-  });
-
-config.plugins = [
-  new webpack.DefinePlugin(defines)
-].concat(config.plugins);
-// END ENV variables
-
-// CSS modules
-const cssModulesNames = `${isDev ? '[path][name]__[local]__' : ''}[hash:base64:5]`;
-
-const matchCssLoaders = /(^|!)(css-loader)($|!)/;
-
-const findLoader = (loaders, match) => {
-  const found = loaders.filter(l => l && l.loader && l.loader.match(match));
-  return found ? found[0] : null;
 };
-
-// existing css loader
-const cssloader =
-  findLoader(config.module.loaders, matchCssLoaders);
-
-const newloader = Object.assign({}, cssloader, {
-  test: /\.module\.css$/,
-  include: [src],
-  loader: cssloader.loader.replace(matchCssLoaders, `$1$2?modules&localIdentName=${cssModulesNames}$3`)
-});
-config.module.loaders.push(newloader);
-cssloader.test = new RegExp(`[^module]${cssloader.test.source}`);
-cssloader.loader = newloader.loader;
-
-config.module.loaders.push({
-  test: /\.css$/,
-  include: [modules],
-  loader: 'style!css'
-});
-
-// CSS modules
-
-// postcss
-config.postcss = [].concat([
-  require('precss')({}),
-  require('autoprefixer')({}),
-  require('cssnano')({})
-]);
-
-// END postcss
-
-// Roots
-config.resolve.root = [src, modules];
-config.resolve.alias = {
-  css: join(src, 'styles'),
-  containers: join(src, 'containers'),
-  components: join(src, 'components'),
-  utils: join(src, 'utils'),
-  styles: join(src, 'styles')
-};
-// end Roots
-
-// Testing
-if (isTest) {
-  config.externals = {
-    'react/lib/ReactContext': true,
-    'react/lib/ExecutionEnvironment': true
-  };
-
-  config.module.noParse = /\/sinon\.js/;
-  config.resolve.alias.sinon = 'sinon/pkg/sinon';
-
-  config.plugins = config.plugins.filter(p => {
-    const name = p.constructor.toString();
-    const fnName = name.match(/^function (.*)\((.*\))/);
-
-    const idx = [
-      'DedupePlugin',
-      'UglifyJsPlugin'
-    ].indexOf(fnName[1]);
-    return idx < 0;
-  });
-}
-// End Testing
-
-module.exports = config;

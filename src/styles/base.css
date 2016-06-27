@@ -1,6 +1,8 @@
 :root {
   --topbar-height: 80px;
   --padding: 25px;
+  --sidebar-width: 325px;
+  --sidebar-color: #99ccff;
 }
 
 

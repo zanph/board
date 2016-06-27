@@ -3,43 +3,13 @@
 
 .wrapper {
    overflow-y: scroll;
-   display: flex;
 }
 .content {
-  position: relative;
+  /*float: right;*/
+  position: absolute;
   top: var(--topbar-height);
-  left: 15px;
-
-  flex: 1;
-  order: 1;
+  left: var(--sidebar-width);
+  margin-left: 20px;
+  margin-right: 20px;
+  display: inline-block;
 }
-/*.wrapper {
-  overflow-y: scroll;
-  display: flex;
-  margin: 0;
-
-  height: 100vh;
-  -webkit-box-orient: horizontal;
-  -o-box-orient: horizontal;
-
-  flex-direction: column;
-
-  @media (--screen-phone-lg) {
-    flex-direction: row;
-  }
-
-}
-
-.content {
-  position: relative;
-  top: var(--topbar-height);
-  left: 0;
-
-  flex: 1;
-  order: 1;
-
-  @media (--screen-phone-lg) {
-    flex: 2;
-    order: 2;
-  }
-}*/
