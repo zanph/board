@@ -8,7 +8,7 @@ const root = resolve(__dirname);
 const src = join(root, 'src');
 const modules = join(root, 'node_modules');
 const dest = join(root, 'dist');
- 
+
 module.exports = {
   entry: './src/app.js',
   output: { path: __dirname, filename: 'bundle.js' },
@@ -23,8 +23,18 @@ module.exports = {
         }
       },
       { 
-        test: /\.css$/, 
+        test: /\.css$/,
+        include: [modules], 
         loader: "style-loader!css-loader" 
+      },
+      {
+        test: /[^module]\.css$/,
+        loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
+      },
+      {
+        test: /\.module\.css$/,
+        include: [src],
+        loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
       },
       { 
         test: /\.png$/, 
@@ -52,6 +62,13 @@ module.exports = {
       }
     ]
   },
+
+  postcss : [
+    require('precss'),
+    require('autoprefixer'),
+    require('cssnano')
+  ],
+
   resolve: {
     root: [src, modules],
     alias: {
