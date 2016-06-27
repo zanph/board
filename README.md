@@ -10,19 +10,21 @@ in a single server soon).
 * `react`
 * `react-router`
 * `react-dom`
-* `jquery` (to be removed)
+* `jquery` (to maybe be removed)
+* `react-bootstrap` for styling and layout
 
 Detailed instructions for development environment will follow
 
 ## To-Do
 ###Near Future:
 -----
-* *Migrating to single-server setup*
-* Styling
-  * input forms (comments, tabs)
+* *Migrating to single-server setup* -- (just need to integrate express.js server)
+* Styling (partly done)
+  * ~~input forms (comments, tabs)~~
   * sidebar and tabs
 * Better handling of text entry (especially for markdown)
   * option to use textbox and turn on syntax highlighting in text area
+    * button is in place, just need to implement in react
 
 
 ###Roadmap:
