@@ -18,6 +18,7 @@ Detailed instructions for development environment will follow
 ## To-Do
 ###Near Future:
 -----
+* TravisCI or some other automatic testing for pull requests
 * *Migrating to single-server setup* -- (just need to integrate express.js server)
 * Styling (partly done)
   * ~~input forms (comments, tabs)~~
