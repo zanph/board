@@ -3,14 +3,13 @@
 
 .wrapper {
    overflow-y: scroll;
-   margin-left: var(--sidebar-width);
 }
 .content {
-  height:100vh;
-  float: right;
-  position: relative;
+  /*float: right;*/
+  position: absolute;
   top: var(--topbar-height);
-  left: 15px;
-
-  /*background: rgb(244, 244, 244);*/
+  left: var(--sidebar-width);
+  margin-left: 20px;
+  margin-right: 20px;
+  display: inline-block;
 }

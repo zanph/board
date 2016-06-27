@@ -2,6 +2,7 @@ import React, { PropTypes as T } from 'react'
 import classnames from 'classnames'
 
 import styles from './styles.module.css'
+import { InputGroup, FormControl, Button } from 'react-bootstrap'
 
 
 export class TabForm extends React.Component {
@@ -29,11 +30,18 @@ export class TabForm extends React.Component {
         return (
             <div className={styles.tabForm}>          
                 <form className="commentForm" onSubmit={this.handleSubmit.bind(this)}>
-                    <input type="text"
-                    placeholder="Add a group"
-                    value={this.state.groupName}
-                    onChange={this.handleGroupChange.bind(this)} />
-                    <input type="submit" value="Post" />
+                    <InputGroup>
+                    <FormControl type="text"
+                        value={this.state.groupName}
+                        placeholder="Add a group"
+                        onChange={this.handleGroupChange.bind(this)}
+                        />
+                        <InputGroup.Button>
+                            <Button bsStyle="primary" type="submit" value="Post">
+                                Add
+                            </Button>
+                        </InputGroup.Button>
+                    </InputGroup>
                 </form>
             </div>
         );

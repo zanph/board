@@ -7,16 +7,18 @@
   top: var(--topbar-height);
   left: 0;
   overflow: hidden;
-  padding-right: 15px;
 
-  position: relative;
+  margin-right: 8px;
+  position: absolute;
 
   background: var(--sidebar-color);
+  box-shadow: 2px 0px 5px #888888;
 }
 .sidebar .heading {
 	flex: 1;
-	border-bottom: 1px solid #eee;
+	border-bottom: 2px solid #eee;
 	padding: 0 10px;
+  color: white
 }
 .sidebar .heading h1 {
     font-size: 1.8em;

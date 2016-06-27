@@ -4,7 +4,7 @@ import $ from 'jquery' //todo remove jquery dependency, see note in handleCommen
 import styles from './styles.module.css'
 import CommentList from 'components/CommentList/CommentList'
 import CommentForm from 'components/CommentForm/CommentForm'
-import {Row, Col} from 'react-bootstrap'
+import {Grid, Row, Col} from 'react-bootstrap'
 
 
 export class CommentBox extends React.Component {
@@ -66,15 +66,23 @@ export class CommentBox extends React.Component {
 
    render() {
      return(
-      <Row className={styles.content}>
-        <Col xs={12}>
-          <div >
-          <h1 className={styles.padding}>Comments for tab: {this.props.tab}</h1>
-          <CommentList data={this.state.data} />
-          <CommentForm onCommentSubmit={this.handleCommentSubmit.bind(this)} />
-          </div>
-        </Col>
-      </Row>
+       <div className={styles.content}>
+            <Row>
+              <Col xs={12}>
+                <h1 className={styles.padding}>Comments for tab: {this.props.tab}</h1>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={12}>
+                <CommentList data={this.state.data} />
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={12}>
+                <CommentForm onCommentSubmit={this.handleCommentSubmit.bind(this)} />
+              </Col>
+            </Row>
+        </div>
      );
   }
 }

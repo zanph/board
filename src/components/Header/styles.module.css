@@ -13,6 +13,7 @@
   height: var(--topbar-height);
   line-height: var(--topbar-height);
   color: #fff;
+  box-shadow: 0px 1px 3px #888; 
 }  
  .topbar a {
     color: #fff;
