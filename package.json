@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "start": "echo temp",
-    "dev": "webpack-dev-server --progress --colors --config",
+    "dev": "NODE_ENV=development webpack-dev-server --progress --colors --config",
     "clean": "rimraf dist",
     "build": "npm run clean && NODE_ENV=production webpack",
     "publish_pages": "./node_modules/.bin/gh-pages -d dist",
@@ -27,12 +27,15 @@
     "webpack-dev-server": "^1.14.1"
   },
   "devDependencies": {
+    "autoprefixer": "^6.3.6",
     "babel-core": "^6.10.4",
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-stage-0": "^6.5.0",
     "css-loader": "^0.23.1",
+    "cssnano": "^3.7.1",
     "file-loader": "^0.9.0",
+    "precss": "^1.4.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1"
