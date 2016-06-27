@@ -1,3 +1,9 @@
+/*not used yet, but will be for deployment and testing*/
+const NODE_ENV = process.env.NODE_ENV;
+const isDev = NODE_ENV === "development";
+const isTest = NODE_ENV === "test";
+/******************************************************/
+
 const path = require('path');
 const webpack = require('webpack');
 
