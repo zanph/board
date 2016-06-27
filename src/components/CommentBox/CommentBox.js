@@ -1,10 +1,10 @@
 import React, { PropTypes as T } from 'react'
 import $ from 'jquery' //todo remove jquery dependency, see note in handleCommentSubmit
 
-import styles from './styles.module.css';
+import styles from './styles.module.css'
 import CommentList from 'components/CommentList/CommentList'
 import CommentForm from 'components/CommentForm/CommentForm'
-
+import {Row, Col} from 'react-bootstrap'
 
 
 export class CommentBox extends React.Component {
@@ -13,7 +13,6 @@ export class CommentBox extends React.Component {
 
      this.state = {
         data : []
-        //tab  : 'chat'
         }
    }
 
@@ -67,11 +66,15 @@ export class CommentBox extends React.Component {
 
    render() {
      return(
-        <div className={styles.content}>
-         <h1 className={styles.padding}>Comments for tab: {this.props.tab}</h1>
-         <CommentList data={this.state.data} />
-         <CommentForm onCommentSubmit={this.handleCommentSubmit.bind(this)} />
-        </div>
+      <Row className={styles.content}>
+        <Col xs={12}>
+          <div >
+          <h1 className={styles.padding}>Comments for tab: {this.props.tab}</h1>
+          <CommentList data={this.state.data} />
+          <CommentForm onCommentSubmit={this.handleCommentSubmit.bind(this)} />
+          </div>
+        </Col>
+      </Row>
      );
   }
 }

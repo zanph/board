@@ -9,8 +9,6 @@ import App from './containers/App/App'
 import {hashHistory} from 'react-router'
 import makeRoutes from './routes'
 
-import { Button } from 'react-bootstrap'
-
 const routes = makeRoutes()
 
 const mountNode = document.querySelector('#root');

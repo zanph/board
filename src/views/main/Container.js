@@ -38,9 +38,6 @@ export class Container extends React.Component {
       <div className={styles.wrapper}>
         <Header title="board" />
         <Sidebar title="sidebar" onTabClick={this.onTabClick.bind(this)}/>
-        <div className={styles.content}>
-          {this.renderChildren()}
-        </div>
         <CommentBox pollInterval={1800}
            url="http://localhost:3001/api/comments"
            tab={this.state.tab}/>
@@ -52,5 +49,8 @@ export class Container extends React.Component {
 Container.contextTypes = {
   router: T.object
 }
+//         <div className={styles.content}>
+//           {this.renderChildren()}
+//         </div>
 
 export default Container

@@ -22,20 +22,23 @@ module.exports = {
           presets: ['babel-preset-es2015', 'babel-preset-react', 'babel-preset-stage-0'].map(require.resolve)
         }
       },
-      { 
-        test: /\.css$/,
-        include: [modules], 
-        loader: "style-loader!css-loader" 
-      },
-      {
-        test: /[^module]\.css$/,
-        loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
-      },
       {
         test: /\.module\.css$/,
         include: [src],
         loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
       },
+      // for css in node_modules
+      { 
+        test: /\.css$/,
+        include: [modules], 
+        loader: "style-loader!css-loader" 
+      },
+      //for non-css module support
+      {
+        test: /[^module]\.css$/,
+        loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
+      },
+      //css module support
       { 
         test: /\.png$/, 
         loader: "url-loader?limit=100000" 
@@ -64,9 +67,9 @@ module.exports = {
   },
 
   postcss : [
-    require('precss'),
-    require('autoprefixer'),
-    require('cssnano')
+    require('precss')({}),
+    require('autoprefixer')({}),
+    require('cssnano')({})
   ],
 
   resolve: {
