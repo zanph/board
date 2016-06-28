@@ -15,8 +15,7 @@ export class CommentList extends React.Component{
          );
       });
       return (
-         <div className="commentList">
-            <h2>hi im the comment list. heres the comments:</h2>
+         <div className={styles.commentList}>
             {commentNodes}
          </div>
       );

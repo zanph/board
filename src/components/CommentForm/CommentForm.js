@@ -2,7 +2,7 @@ import React, { PropTypes as T } from 'react'
 //import {Link} from 'react-router'
 
 import styles from './styles.module.css'
-import { FormGroup, FormControl, InputGroup, Button } from 'react-bootstrap'
+import { FormGroup, FormControl, ControlLabel, InputGroup, Button } from 'react-bootstrap'
 
 export class CommentForm extends React.Component{
    constructor(props){
@@ -10,7 +10,8 @@ export class CommentForm extends React.Component{
 
      this.state = {
         author: '',
-        text  : ''
+        text  : '',
+        showCodeBox: false
      }
    }
 
@@ -31,6 +32,14 @@ export class CommentForm extends React.Component{
       this.setState({author: '', text: ''});
    }
 
+   handleCodeEntry () {
+     //toggle expanded editor
+     this.setState({ showCodeBox: !(this.state.showCodeBox)});
+   }
+
+   closeCodeBox () {
+     this.setState({ showCodeBox: false });
+   }
    render () {
       return(
          <form className={styles.commentForm} onSubmit={this.handleSubmit.bind(this)}>
@@ -42,7 +51,10 @@ export class CommentForm extends React.Component{
                />
             <InputGroup>
                 <InputGroup.Button>
-                  <Button bsStyle="info">Toggle code</Button>
+                  <Button bsStyle="info" 
+                  onClick={this.handleCodeEntry.bind(this)}>
+                    Toggle code
+                  </Button>
                 </InputGroup.Button>
               <FormControl type="text"
                 value={this.state.text}
@@ -55,8 +67,13 @@ export class CommentForm extends React.Component{
                   </Button>
                 </InputGroup.Button>
            </InputGroup>
-
+            <FormGroup controlId="formControlsTextarea" 
+              style={{display : (this.state.showCodeBox)? "block":"none"}}>
+              <ControlLabel>Expanded Editor</ControlLabel>
+              <FormControl componentClass="textarea" placeholder="Enter some code!" />
+            </FormGroup>
           </FormGroup>
+
          </form>
       );
    }
