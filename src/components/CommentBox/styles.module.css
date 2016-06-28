@@ -1,9 +1,9 @@
 @import url("../../styles/base.css");
 @import url("../../styles/queries.css");
 
-.wrapper {
-   overflow-y: scroll;
-}
+/*.wrapper {
+   overflow-y: auto;
+}*/
 .content {
   /*float: right;*/
   position: absolute;
@@ -11,5 +11,6 @@
   left: var(--sidebar-width);
   margin-left: 20px;
   margin-right: 20px;
-  display: inline-block;
+  display: block;
+  overflow-y: scroll;
 }
