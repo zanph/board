@@ -12,8 +12,14 @@ export class TabList extends React.Component {
     //for each tab passed in by tablist, do something
     //tabs is a list of objects like {name: "name"}
     let tabs = this.props.tabs.map(tab => {
+        let active;
+        if(tab.name === this.props.activeTab) {
+            active=true;
+        }
         return(
-            <Tab name={tab.name} key={tab.id} onTabClick={this.props.onTabClick.bind(this)}/>
+            <Tab name={tab.name} key={tab.id} 
+            onTabClick={this.props.onTabClick.bind(this)}
+            active={active}/>
         );
     });
     //render the tabs with a temp heading

@@ -1,8 +1,8 @@
 import React, { PropTypes as T } from 'react'
 //import {Link} from 'react-router'
 import ReactDOM from 'react-dom'
-import Remarkable from 'Remarkable'
-import styles from './styles.module.css';
+import Remarkable from 'remarkable'
+import styles from './styles.module.css'
 
 //import highlightjs from 'highlight.js'
 
