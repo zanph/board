@@ -21,10 +21,9 @@
 }
 .sidebar .heading {
   order: 1;
-	border-bottom: 2px solid #eee;
 	padding: 0 10px;
-  color: white
 }
 .sidebar .heading h1 {
-    font-size: 1.8em;
+  color: white;
+  font-size: 1.8em;
 }

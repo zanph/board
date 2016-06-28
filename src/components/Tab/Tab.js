@@ -21,7 +21,7 @@ export class Tab extends React.Component {
     render () {        
         return (
             <Button onClick={this.update.bind(this)} 
-                bsStyle="primary" bsSize="large" block 
+                bsStyle="default" bsSize="large" block 
                 active={(this.props.active) ? "active" : ""} >
                 {this.props.name}
             </Button>

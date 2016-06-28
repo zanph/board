@@ -1,0 +1,6 @@
+.tablist {
+    border: 2px solid lightgrey;
+    max-height: 100%;
+    overflow-y: scroll;
+
+}
