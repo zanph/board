@@ -17,7 +17,7 @@ export class CommentList extends React.Component{
       const test = "for(int i = 0; i < max; ++i){\n  std::cout << this->name(i);\n}";
       return (
          <div className={styles.commentList}>
-            <pre className="prettyprint lang-c++">{test}</pre>
+            <pre className="prettyprint lang-">{test}</pre>
             {commentNodes}
          </div>
       );
