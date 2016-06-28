@@ -16,8 +16,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 
-var COMMENTS_FILE = path.join(__dirname, 'comments.json');
-var TABS_FILE     = path.join(__dirname, 'tabs.json');
+const COMMENTS_FILE = path.join(__dirname, 'comments.json');
+const TABS_FILE     = path.join(__dirname, 'tabs.json');
 
 app.set('port', (process.env.PORT || 3001));
 
