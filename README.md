@@ -7,6 +7,8 @@ To run, `npm install` and then `node server.js` and `npm start` (will combine `e
 in a single server soon).
 ### Dependencies
 * `classnames`
+* `express` (api endpoints)
+* `remarkable` (automatic markdown for comments)
 * `react`
 * `react-router`
 * `react-dom`
