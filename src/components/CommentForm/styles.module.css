@@ -4,7 +4,17 @@
     margin-top: 15px;
 }
 
-.commentForm textarea {
+.expandedCommentForm textarea {
   min-width: 10%;
   /*want to make it so the box can expand without expanding the comment box div*/
+}
+
+.expandedCommentForm input, 
+.expandedCommentForm span, 
+.expandedCommentForm button {
+  margin: 7px 0px 7px 8px;
+}
+
+ul.dropdown-menu { 
+/*need to make the dropdown display on top of its parent div, or maybe something better than that*/
 }

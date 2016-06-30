@@ -24,5 +24,7 @@ body {
 code {
   /*so that line breaks are preserved when displaying code*/
   white-space: pre;
+  /*spacing looked weird without this?*/
+  line-height: 1.4em;
 }
 

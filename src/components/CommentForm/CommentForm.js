@@ -2,7 +2,7 @@ import React, { PropTypes as T } from 'react'
 //import {Link} from 'react-router'
 
 import styles from './styles.module.css'
-import { FormGroup, FormControl, ControlLabel, InputGroup, Button } from 'react-bootstrap'
+import { FormGroup, FormControl, ControlLabel, InputGroup, Button, DropdownButton, MenuItem } from 'react-bootstrap'
 
 export class CommentForm extends React.Component{
    constructor(props){
@@ -102,9 +102,13 @@ export class CommentForm extends React.Component{
                 <FormControl componentClass="textarea" 
                 placeholder="Enter some code!" 
                 onChange={this.handleExpandedTextChange.bind(this)}/>
-              <SplitButton bsStyle="default" title="Choose language" id="language-choice">
+              <DropdownButton bsStyle="default" title="Choose language" id="language-choice">
+                <MenuItem eventKey="1">temp</MenuItem> 
                 {/* make a const list of supported hljs langs and do langs.map here... */}
-              </SplitButton>
+              </DropdownButton>
+              <Button bsStyle="info" id="preview-post">
+                Preview
+              </Button>
               <Button bsStyle="primary" type="submit" value="Post">
                 Post
               </Button>
