@@ -19,7 +19,7 @@ export class CommentBox extends React.Component {
    handleCommentSubmit (comment) {
      //TODO/FIX: remove jquery dependnecy and use fetch() 
      let comments = this.state.data;
-     
+     console.log(comments);
      //use optimistic updating to id the comment now (this will be replaced)
      //and display to the user.
      comment.id = Date.now();
@@ -39,7 +39,7 @@ export class CommentBox extends React.Component {
          //what's actually on the server.
          this.setState({data: comments});
          console.error(this.props.url, status, err.toString());
-       }
+       }.bind(this)
      });
    }
 

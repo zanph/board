@@ -1,0 +1,7 @@
+.codeBlock {
+    /*so a gigantic bar isn't covering the whole page. maybe handle this another way...*/
+    max-width: 80%;
+    /*stack overflow-ish font appearance*/
+    font-family: Consolas, Monaco, Lucida Console, Liberation Mono, 
+    DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
+}

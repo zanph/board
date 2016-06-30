@@ -1,6 +1,7 @@
 .tablist {
-    border: 2px solid lightgrey;
-    max-height: 100%;
+    border: 1px dashed red;
+    max-height: 85%; /*so the tab list doesn't cause the tab form to fall
+                       off of the page.*/
     overflow-y: scroll;
-
+    margin-bottom: 10px; /* space between the bottom-most tab and the form*/
 }
