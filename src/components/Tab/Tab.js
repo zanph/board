@@ -8,7 +8,6 @@ import { Button } from 'react-bootstrap'
 export class Tab extends React.Component {
 
     update () {
-        console.log(this.props.active);
         this.props.onTabClick(this);
     }
 
@@ -22,7 +21,7 @@ export class Tab extends React.Component {
         return (
             <Button onClick={this.update.bind(this)} 
                 bsStyle="default" bsSize="large" block 
-                active={(this.props.active) ? "active" : ""} >
+                active={(this.props.active) ? true : false} >
                 {this.props.name}
             </Button>
         );

@@ -2,78 +2,35 @@
     {
         "id": 1466010675264,
         "name": "school",
-        "comments": [
-            {
-                "id": 1,
-                "author": "Pete Hunt",
-                "text": "This is one comment"
-            }
-        ]
+        "comments": []
     },
     {
         "id": 1466010688393,
         "name": "work",
-        "comments": [
-            {
-                "id": 2,
-                "author": "abc",
-                "text": "This is *another* comment"
-            }
-        ]
+        "comments": []
     },
     {
         "id": 1466188809672,
         "name": "chat",
         "comments": [
             {
-                "id": 1466188873048,
-                "author": "presotn",
-                "text": "abc"
-            },
-            {
-                "id": 1466190339843,
+                "id": 1467302270513,
                 "author": "a",
-                "text": "b"
+                "text": "while(true) { return 0; }",
+                "isCode": "true"
             },
             {
-                "id": 1466190879830,
-                "author": "ab",
-                "text": "cd"
+                "id": 1467303971977,
+                "author": "a",
+                "text": "if(condition) { std::cout << \"hello\";}",
+                "isCode": "true"
             },
             {
-                "id": 1466190882999,
-                "author": "ef",
-                "text": "gh"
-            },
-            {
-                "id": 1466190887928,
-                "author": "xy",
-                "text": "*zzz*"
-            },
-            {
-                "id": 1466190965357,
-                "author": "ab",
-                "text": "xy"
-            },
-            {
-                "id": 1466191028528,
-                "author": "asfdadsf",
-                "text": "*fasdfads*"
-            },
-            {
-                "id": 1466191258473,
-                "author": "asdfasf",
-                "text": "fasdfaslkj;"
-            },
-            {
-                "id": 1466191264435,
-                "author": "zxcvzxcv",
-                "text": "*asdfasdf*"
+                "id": 1467304852276,
+                "author": "test",
+                "text": "#include <iostream>\n\nint main(int argc, char *argv[]) {\n\n  /* An annoying \"Hello World\" example */\n  for (auto i = 0; i < 0xFFFF; i++)\n    cout << \"Hello, World!\" << endl;\n\n  char c = '\\n';\n  unordered_map <string, vector<string> > m;\n  m[\"key\"] = \"\\\\\\\\\"; // this is an error\n\n  return -2e3 + 12l;\n}",
+                "isCode": "true"
             }
         ]
-    },
-    {
-        "id": 1466526408022,
-        "comments": []
     }
 ]

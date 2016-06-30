@@ -4,7 +4,7 @@
     padding-left: 10px;
     padding-bottom: 125px;
     height: 100%;
-    border: 2px solid white;
+    border: 1px dashed purple;
 }
 .content h2 {
     color: white;

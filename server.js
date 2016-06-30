@@ -108,6 +108,7 @@ app.post('/api/comments', function(req, res) {
           id: Date.now(),
           author: req.body.comment.author,
           text: req.body.comment.text,
+          isCode: req.body.comment.isCode
         };
         tabs[i].comments.push(newComment);
         result = tabs[i].comments;

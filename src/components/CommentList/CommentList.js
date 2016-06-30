@@ -9,15 +9,13 @@ export class CommentList extends React.Component{
    render () {
       let commentNodes = this.props.data.map(comment => {
          return(
-            <Comment author={comment.author} key={comment.id}>
+            <Comment author={comment.author} key={comment.id} code={comment.isCode}>
                {comment.text}
             </Comment>
          );
       });
-      const test = "for(int i = 0; i < max; ++i){\n  std::cout << this->name(i);\n}";
       return (
          <div className={styles.commentList}>
-            <pre className="prettyprint lang-">{test}</pre>
             {commentNodes}
          </div>
       );

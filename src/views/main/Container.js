@@ -37,7 +37,7 @@ export class Container extends React.Component {
     return (
       <div className={styles.wrapper}>
         <Header title="board" />
-        <Sidebar title="groups" onTabClick={this.onTabClick.bind(this)}
+        <Sidebar title="your groups" onTabClick={this.onTabClick.bind(this)}
           activeTab={this.state.tab}/>
         <CommentBox pollInterval={10000}
            url="http://localhost:3001/api/comments"

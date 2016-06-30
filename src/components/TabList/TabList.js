@@ -25,7 +25,6 @@ export class TabList extends React.Component {
     //render the tabs with a temp heading
 	return (
       <div className={styles.tablist}>
-        <h2>this is the TabList. it lists tabs.</h2>
         {tabs}
       </div>
 	);

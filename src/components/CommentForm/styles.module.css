@@ -1,10 +1,10 @@
 .commentForm input,
-.commentForm span {
-    margin-bottom: 15px;
+.commentForm span,
+.commentForm button {
+    margin-top: 15px;
 }
-.modal-container {
-  position: relative;
-}
-.modal-container .modal, .modal-container .modal-backdrop {
-  position: absolute;
+
+.commentForm textarea {
+  min-width: 10%;
+  /*want to make it so the box can expand without expanding the comment box div*/
 }
