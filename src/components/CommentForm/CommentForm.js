@@ -75,7 +75,7 @@ export class CommentForm extends React.Component{
                 <InputGroup.Button>
                   <Button bsStyle="info" 
                   onClick={this.handleCodeEntry.bind(this)}>
-                    Toggle code
+                    Expanded Editor
                   </Button>
                 </InputGroup.Button>
               <FormControl type="text"
@@ -102,6 +102,9 @@ export class CommentForm extends React.Component{
                 <FormControl componentClass="textarea" 
                 placeholder="Enter some code!" 
                 onChange={this.handleExpandedTextChange.bind(this)}/>
+              <SplitButton bsStyle="default" title="Choose language" id="language-choice">
+                {/* make a const list of supported hljs langs and do langs.map here... */}
+              </SplitButton>
               <Button bsStyle="primary" type="submit" value="Post">
                 Post
               </Button>
