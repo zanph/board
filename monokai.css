@@ -1,0 +1,50 @@
+.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    background: #272822;
+    color: #ddd;
+    font-size: 12.5px;
+}
+
+.hljs-tag, .hljs-keyword, .hljs-selector-tag, .hljs-literal, .hljs-strong,
+.hljs-name {
+    color: #f92672;
+    font-size: 12.5px;
+}
+
+.hljs-code {
+    color: #66d9ef;
+    font-size: 12.5px;
+}
+
+.hljs-class .hljs-title, .hljs-number  {
+    color: white;
+    font-size: 12.5px;
+}
+
+.hljs-attribute, .hljs-symbol, .hljs-regexp, .hljs-link {
+    color: #bf79db;
+    font-size: 12.5px;
+}
+
+.hljs-string, .hljs-bullet, .hljs-subst, .hljs-title, .hljs-section,
+.hljs-emphasis, .hljs-type, .hljs-built_in, .hljs-builtin-name, .hljs-selector-attr,
+.hljs-selector-pseudo, .hljs-addition, .hljs-variable, .hljs-template-tag,
+.hljs-template-variable {
+    color: #a6e22e;
+    font-size: 12.5px;
+}
+
+.hljs-comment, .hljs-quote, .hljs-deletion, .hljs-meta, .hljs-meta-keyword, .hljs-meta-string {
+    color: #75715e;
+    font-size: 12.5px;
+}
+
+.hljs-keyword, .hljs-selector-tag, .hljs-literal, .hljs-doctag,
+.hljs-title, .hljs-section, .hljs-type, .hljs-selector-id {
+    font-weight: bold;
+    font-size: 12.5px;
+}
+
+.hljs-function span {font-size: 12.5px;}
