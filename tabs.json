@@ -36,6 +36,18 @@
                 "author": "a",
                 "text": "a",
                 "isCode": "false"
+            },
+            {
+                "id": 1467334479751,
+                "author": "anon-43eb",
+                "text": "while(true) { std::cout<< \"dat boi\";}",
+                "isCode": "true"
+            },
+            {
+                "id": 1467334578630,
+                "author": "anon-43eb",
+                "text": "while(true) { std::cout<< \"dat boi\";}",
+                "isCode": "true"
             }
         ]
     }

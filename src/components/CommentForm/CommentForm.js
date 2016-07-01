@@ -53,7 +53,7 @@ export class CommentForm extends React.Component{
       //todo: if(code button is toggled) isCode: true;
       console.log(text);
       this.props.onCommentSubmit({author: author, text: text, isCode: true});
-      this.setState({text: ''});
+      this.setState({expandedText: ''});
    }
 
    handleCodeEntry () {
