@@ -2,17 +2,24 @@ import React, { PropTypes as T } from 'react'
 //import {Link} from 'react-router'
 
 import styles from './styles.module.css'
-import { FormGroup, FormControl, ControlLabel, InputGroup, Button, DropdownButton, MenuItem } from 'react-bootstrap'
+import { FormGroup, FormControl, HelpBlock, ControlLabel, 
+  InputGroup, Button, DropdownButton, MenuItem } from 'react-bootstrap'
+
 
 export class CommentForm extends React.Component{
    constructor(props){
      super(props);
-
+     const crypto = require('crypto');
+     let tempName;
+     crypto.randomBytes(2, function(err, buffer) {
+      tempName = buffer.toString('hex');
+     });
      this.state = {
-        author: '',
+        author: 'anon-'+tempName,
         text  : '',
         expandedText: '', //for the expanded editor
-        showCodeBox: false
+        showCodeBox: false,
+        loggedIn: false //maybe this should just be 'name set'
      }
    }
 
@@ -34,7 +41,7 @@ export class CommentForm extends React.Component{
       let text = this.state.text.trim();
       if (!text || !author){ return; }
       this.props.onCommentSubmit({author: author, text: text, isCode: false});
-      this.setState({author: '', text: ''});
+      this.setState({text: ''});
    }
 
    handleExpandedSubmit (e) {
@@ -46,7 +53,7 @@ export class CommentForm extends React.Component{
       //todo: if(code button is toggled) isCode: true;
       console.log(text);
       this.props.onCommentSubmit({author: author, text: text, isCode: true});
-      this.setState({author: '', text: ''});
+      this.setState({text: ''});
    }
 
    handleCodeEntry () {
@@ -66,11 +73,16 @@ export class CommentForm extends React.Component{
           onSubmit={this.handleSubmit.bind(this)}
           >
           <FormGroup controlId="commentEntry">
+            <ControlLabel>Your id</ControlLabel>
             <FormControl type="text"
                placeholder="Your Name"
                value={this.state.author}
                onChange={this.handleAuthorChange.bind(this)} 
+               disabled={!this.state.loggedIn}
                />
+            <HelpBlock id="user_id_note">
+              Your ID is set automatically. Feel free to change it!
+            </HelpBlock>
             <InputGroup>
                 <InputGroup.Button>
                   <Button bsStyle="info" 

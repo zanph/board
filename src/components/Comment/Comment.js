@@ -56,17 +56,17 @@ export class Comment extends React.Component {
        commentBody =
         <span dangerouslySetInnerHTML={this.rawMarkup()} />
      }
-     let highlightIcon;
-     //if the comment is already favorited (state), display a filled star, otherwise don't.
-     //follow up - have a count of # times favorited in a group?
-     if (this.state.highlighted) {
-      highlightIcon =
-        <Button bsSize="small"><Glyphicon glyph="star" /></Button>
-     }
-     else {
-      highlightIcon = 
-        <Button bsSize="small"><Glyphicon glyph="star-empty" /></Button>
-     }
+    //  let highlightIcon;
+    //  //if the comment is already favorited (state), display a filled star, otherwise don't.
+    //  //follow up - have a count of # times favorited in a group?
+    //  if (this.state.highlighted) {
+    //   highlightIcon =
+    //     <Button bsSize="small"><Glyphicon glyph="star" /></Button>
+    //  }
+    //  else {
+    //   highlightIcon = 
+    //     <Button bsSize="small"><Glyphicon glyph="star-empty" /></Button>
+    //  }
       return(
          <div className={styles.comment}>
             <h2 className="commentAuthor">
@@ -74,7 +74,7 @@ export class Comment extends React.Component {
             </h2>
             <div className={styles.commentBlock}>
               {commentBody}
-              {highlightIcon}
+              {/*highlightIcon*/}
             </div>
          </div>
       );
