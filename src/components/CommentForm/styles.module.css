@@ -1,7 +1,16 @@
+.commentFormContainer {
+  border: 2px solid lightcoral;
+  border-radius: 5px;
+  padding: 8px;
+  margin-bottom: 15px; 
+  margin-top: 15px;
+  background: white;
+}
+
 .commentForm input,
 .commentForm span,
 .commentForm button {
-    margin-top: 15px;
+    margin-top: 5px;
 }
 
 .expandedCommentForm textarea {
@@ -14,6 +23,7 @@
 .expandedCommentForm button {
   margin: 7px 0px 7px 8px;
 }
+
 
 ul.dropdown-menu { 
 /*need to make the dropdown display on top of its parent div, or maybe something better than that*/

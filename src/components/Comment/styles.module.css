@@ -1,6 +1,13 @@
 .comment {
     width: 100%;
+    padding-left: 10px;
+    padding-bottom: 10px;
 }
+.comment:nth-child(even) {
+    background:#ddd;
+    border-radius: 5px;
+}
+
 .commentBlock {
     max-width: 100%;
     width: 95%;
@@ -11,8 +18,8 @@
 .codeBlock {
     /*so a gigantic bar isn't covering the whole page. maybe handle this another way...*/
     /*stack overflow-ish font appearance*/
-    max-width: 95%;
-    width:95%;
+    /*max-width: 95%;*/
+    /*width:95%;*/
     font-family: Consolas, Monaco, Lucida Console, Liberation Mono, 
     DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
     order: 1;
@@ -21,4 +28,5 @@
 .commentBlock button {
     order:2;
     text-align: center;
+    float: right;
 }
