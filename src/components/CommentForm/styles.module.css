@@ -1,10 +1,11 @@
 .commentFormContainer {
-  border: 2px solid lightcoral;
+  border: 1px solid lightcoral;
   border-radius: 5px;
   padding: 8px;
   margin-bottom: 15px; 
   margin-top: 15px;
-  background: white;
+  background: rgb(253,253,253);
+  /*box-shadow: -3px 3px 1px #888888;*/
 }
 
 .commentForm input,
