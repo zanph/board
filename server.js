@@ -18,6 +18,7 @@ var app = express();
 
 const COMMENTS_FILE = path.join(__dirname, 'comments.json');
 const TABS_FILE     = path.join(__dirname, 'tabs.json');
+const BOARDS_FILE    = path.join(___dirname, 'boards.json');
 
 app.set('port', (process.env.PORT || 3001));
 
@@ -169,6 +170,41 @@ app.post('/api/tabs', function(req, res) {
       res.json(tabs);
     });
   });
+});
+
+app.post('/api/board/new', function(req, res) {
+  //Generate a URL (ensure it isn't in use)
+  //return the generated url-suffix
+});
+
+app.get('/api/board', function(req,res) {
+  const board = req.query.board;
+  //return an error if no board is provided
+  if(!board) {
+    res.status(404);
+    res.send('no board provided!');
+  }
+  else{
+    fs.readFile(BOARDS_FILE, function(err, data) {
+      //return an error if the file couldn't be read
+      if (err) {
+        console.error(err);
+        res.status(404);
+        res.send('file error');
+      }
+      else {
+        //if we find the board, return its data
+        if( Object.keys(data).indexOf(board) !== -1 ) {
+          res.json(data[board]);
+        }
+        else {
+          //otherwise return an error
+          res.status(404);
+          res.send('no such board');
+        }
+      }
+    });
+  }
 });
 
 
