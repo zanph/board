@@ -3,6 +3,7 @@ import React, { PropTypes as T } from 'react'
 import Header     from 'components/Header/Header'
 import CommentBox from 'components/CommentBox/CommentBox'
 import Sidebar    from 'components/Sidebar/Sidebar'
+import Landing    from 'components/Landing/Landing'
 
 import styles from './styles.module.css'
 
