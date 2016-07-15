@@ -3,7 +3,6 @@ import { Link } from 'react-router'
 import styles from './styles.module.css'
 import { Jumbotron, Button } from 'react-bootstrap'
 import Remarkable from 'remarkable'
-import 'font-awesome/css/font-awesome.css'
 import $ from 'jquery'
 
 //highlightjs isn't playing nice with import for right now? 
@@ -12,7 +11,6 @@ var hljs = require('highlight.js');
 export class Landing extends React.Component {
     constructor(props){
         super(props)
-
         // this.setState({
         //     showLanding: true
         // });
@@ -66,8 +64,8 @@ export class Landing extends React.Component {
                     <Button bsStyle="primary" bsSize="large" onClick={this.handleNewBoard.bind(this)}>
                         Let's get started!
                     </Button>
-                    <Button bsStyle="info" bsSize="large">
-                        <i className="fa fa-github fa-lg" aria-hidden="true"></i>
+                    <Button bsStyle="info" bsSize="large" href="https://github.com/zanph/board">
+                        <i className={styles.github + " fa fa-github-alt fa-lg"} aria-hidden="true"></i>
                         github
                     </Button>
                 </p>

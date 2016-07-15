@@ -1,13 +1,17 @@
-.wrapper,
-.wrapper code {
+.wrapper {
     text-align: center;
+    min-height: 100%;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .codeBlock {
-    /*so a gigantic bar isn't covering the whole page. maybe handle this another way...*/
-    /*stack overflow-ish font appearance*/
-    /*max-width: 95%;*/
-    margin: 0 33% 0 33%;
+    /*so a gigantic block doesnt cover the page*/
+    margin: 0 12% 0 12%;
     font-family: Consolas, Monaco, Lucida Console, Liberation Mono, 
     DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
     order: 1;
@@ -27,4 +31,12 @@
 
 .mdExample p {
     margin: 5px 0 0 0;
+}
+
+.wrapper p button {
+    margin: 0 15px 0 15px;
+}
+
+.github {
+    margin-right: 8px;
 }
