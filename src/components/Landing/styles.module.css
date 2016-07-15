@@ -1,0 +1,30 @@
+.wrapper,
+.wrapper code {
+    text-align: center;
+}
+
+.codeBlock {
+    /*so a gigantic bar isn't covering the whole page. maybe handle this another way...*/
+    /*stack overflow-ish font appearance*/
+    /*max-width: 95%;*/
+    margin: 0 33% 0 33%;
+    font-family: Consolas, Monaco, Lucida Console, Liberation Mono, 
+    DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
+    order: 1;
+}
+.boardLink {
+    /*to match rest of the jumbotron text*/
+    font-size: 16px;
+}
+.wrapper p {
+    white-space: normal;
+    margin: 5px 0 5px 0;
+}
+
+.wrapper button {
+    margin-top: 5px;
+}
+
+.mdExample p {
+    margin: 5px 0 0 0;
+}

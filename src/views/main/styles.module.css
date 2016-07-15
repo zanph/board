@@ -17,6 +17,7 @@
   background: rgb(244,244,244);
 
   /*this breaks the comment box displaying next to the sidebar*/
+  /*no it doesn't????*/
   flex-direction: row;
 
   /*@media (--screen-phone-lg) {

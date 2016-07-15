@@ -175,6 +175,11 @@ app.post('/api/tabs', function(req, res) {
 app.post('/api/board/new', function(req, res) {
   //Generate a URL (ensure it isn't in use)
   //return the generated url-suffix
+  const board = req.body.board;
+  /*generate url here*/
+  fs.writeFile(BOARDS_FILE, function(req, res) { 
+    /*write to file*/
+  });
 });
 
 app.get('/api/board', function(req,res) {
@@ -194,13 +199,17 @@ app.get('/api/board', function(req,res) {
       }
       else {
         //if we find the board, return its data
-        if( Object.keys(data).indexOf(board) !== -1 ) {
-          res.json(data[board]);
-        }
-        else {
-          //otherwise return an error
-          res.status(404);
-          res.send('no such board');
+        var found = false;
+        for(let i = 0; i < data.length; ++i) {
+          if(data[i].name === board) {
+            res.json(data[i]);
+            found = true;
+            break;
+          }
+          if(!found) {
+            //return an error if we didn't find the board
+            res.status(404);
+          }
         }
       }
     });
