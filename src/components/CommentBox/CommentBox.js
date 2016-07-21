@@ -30,7 +30,7 @@ export class CommentBox extends React.Component {
        url: this.props.url,
        dataType: 'json',
        type: 'POST',
-       data: {comment: comment, tabName: this.props.tab},
+       data: {comment: comment, boardName: this.props.board},
        success: function(data){
          this.setState({data: data});
        }.bind(this),
@@ -44,10 +44,10 @@ export class CommentBox extends React.Component {
    }
 
    loadCommentsFromServer () {
-     console.log(this.props.tab);
+     console.log(this.props.board);
       $.ajax({
          url: this.props.url,
-         data: {tabName: this.props.tab},
+         data: {boardName: this.props.board},
          dataType: 'json',
          cache: false,
          success: function(data) {
@@ -69,7 +69,7 @@ export class CommentBox extends React.Component {
        <div className={styles.content}>
             <Row>
               <Col xs={12}>
-                <h1 className={styles.padding}>Comments for tab: {this.props.tab}</h1>
+                <h1 className={styles.padding}>Comments for board: {this.props.board}</h1>
               </Col>
             </Row>
             <Row>

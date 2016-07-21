@@ -8,7 +8,7 @@ import Landing from 'components/Landing/Landing'
 export const makeMainRoutes = () => {
   return (
     <Route path="/" component={Landing}>
-      <Route path="b/:boardID" component={CommentBox} />  
+      <Route path="b/:boardID" component={Container} />  
       {/*this will change*/}
       <Route path="temp" component={Container}/>    
     </Route>
