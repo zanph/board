@@ -6,9 +6,11 @@
 }*/
 .content {
   /*float: right;*/
-  position: absolute;
   top: var(--topbar-height);
-  left: var(--sidebar-width);
+  /*absolute positioning is pretty lazy here*/
+  /*probably best to use flex boxes consistently*/
+  position: absolute;
+  /*left: var(--sidebar-width);*/
   margin-left: 20px;
   margin-right: 20px;
   display: block;

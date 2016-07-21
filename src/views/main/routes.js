@@ -1,26 +1,18 @@
 import React from 'react'
 import {Route, IndexRoute} from 'react-router'
 
+import Main from './Main'
 import Container from './Container'
 import CommentBox from 'components/CommentBox/CommentBox'
-import IndexPage from './indexPage/IndexPage'
+import Landing from 'components/Landing/Landing'
 
 export const makeMainRoutes = () => {
   return (
-    <Route path="/" component={Container}>
-      <Route path="m/:tabID" component={CommentBox} />
-      {/* Lazy-loading */}
-      <Route path="about" getComponent={(location, cb) => {
-          require.ensure([], (require) => {
-            const mod = require('./about/About');
-            cb(null, mod.default);
-          });
-        }} />
-      {/* inline loading */}
-
+    <Route path="/" component={Main}>
+      <IndexRoute component={Landing} />
+        <Route path="b/:boardID" component={Container} />
     </Route>
   )
 }
 
 export default makeMainRoutes
-//<IndexRoute component={IndexPage} />
