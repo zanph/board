@@ -25,6 +25,8 @@ export class Container extends React.Component {
   }
   
   componentDidMount () {
+    //this is kind of a hack...
+    //$('#landing_page').hide();
     this.getBoardInfo();
     console.log(this.state.board);
   }

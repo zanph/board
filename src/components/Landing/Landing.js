@@ -13,7 +13,10 @@ export class Landing extends React.Component {
         super(props)
     }
     
-    postNewBoard() {
+    componentDidMount() {
+        $('#landing_page').fadeIn();
+    }
+    postNewBoard () {
         const board = Math.random().toString(36).replace(/([^a-z])+/g, '').substr(0,7);
         console.log(board);
         $.ajax({
@@ -43,7 +46,6 @@ export class Landing extends React.Component {
         if(!url) {
             //an error occurred!
             console.error('no url provided!');
-
         }
         push('/b/' + url);
         $('#landing_page').fadeOut();
