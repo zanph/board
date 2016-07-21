@@ -1,3 +1,6 @@
+# board Github Pages staging area
+where a live demo will be hosted.
+
 # board
 Collaborative, markdown-enabled chat in the browser, built with React.
 
