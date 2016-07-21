@@ -95,7 +95,7 @@ app.post('/api/comments', function(req, res) {
       }
     }
     if(!found){
-      tempBoard = {"id":Date.now(), "name":boardName, "comments":[comment]};
+      tempBoard = {"id":Date.now(), "name":boardName, "comments":[newComment]};
       boards.push(tempBoard);
       fs.writeFile(BOARDS_FILE, JSON.stringify(boards, null, 4), function(err) {
         if (err) {
