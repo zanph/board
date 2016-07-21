@@ -18,7 +18,7 @@ export class Container extends React.Component {
   }
   
   componentDidUpdate (prevProps) {
-    if (prevProps.params.board !== this.state.board) {
+    if (prevProps.params.boardID !== this.state.board) {
       //if we loaded a new board get its info
       this.getBoardInfo();
     }
@@ -30,14 +30,15 @@ export class Container extends React.Component {
   }
 
   getBoardInfo () {
+    console.log(this.props.params);
     //get the board name from the url
     this.setState({
       loading: true
     });
-    const {board} = this.props.params;
+    const {boardID} = this.props.params;
     this.setState({
       loading: false,
-      board: board
+      board: boardID
     });
   }
   

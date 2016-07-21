@@ -39,68 +39,47 @@ app.use(function(req, res, next) {
 
 app.get('/api/comments', function(req, res) {
   /*
-  *  This API endpoint is used to get the comments for a given tab
+  *  This API endpoint is used to get the comments for a given board
   */
-  //retrieve the tab name from the URL query
-  const tabName = req.query.tabName;
-  console.log(tabName);
-  var tabs;
-  fs.readFile(TABS_FILE, function(err, data) {
+  //retrieve the board name from the URL query
+  const boardName = req.query.boardName;
+  console.log(boardName);
+  var boards;
+  fs.readFile(BOARDS_FILE, function(err, data) {
     if (err) {
       console.error(err);
       process.exit(1);
     }
-    //parse tabs from the TABS_FILE
-    tabs = JSON.parse(data);
-    console.log(JSON.stringify(tabs));
-    //look for the tab by name
+    //parse boards from the BOARDS_FILE
+    boards = JSON.parse(data);
+    console.log(JSON.stringify(boards));
+    //look for the board by name
     let found = false;
-    for(let i=0; i < tabs.length; ++i) {
-      console.log(tabs[i].name);
-      if(tabs[i].name === tabName) {
+    for(let i=0; i < boards.length; ++i) {
+      console.log(boards[i].name);
+      if(boards[i].name === boardName) {
         found = true;
-        console.log(tabs[i].comments);
-        //if we found the tab, return its comments
-        res.json(tabs[i].comments);
+        console.log(boards[i].comments);
+        //if we found the board, return its comments
+        res.json(boards[i].comments);
       }
-    }
-    if (!found) {
-      //if we didnt find the tab (usually when opening for the first time), create it
-      //with no comments
-      console.log('tab not found');
-      //initialize a new tab
-      tempTab = {"id":Date.now(), "name":tabName, "comments":[]};
-      //add it to the current tab list
-      tabs.push(tempTab);
-      console.log('new tabs: \n');
-      console.log(JSON.stringify(tabs));
-      //write the new tabs to TABS_FILE
-      fs.writeFile(TABS_FILE, JSON.stringify(tabs, null, 4), function(err) {
-        if (err) {
-          console.error(err);
-          process.exit(1);
-        }
-        //return an empty list object (the new comment list), equivalent to
-        //res.json(tabs[tabs.length].comments)
-        res.json([]);
-      });
     }
   });
 });
 
 app.post('/api/comments', function(req, res) {
-  let tabs;
-  const tabName = req.body.tabName;
-  fs.readFile(TABS_FILE, function(err, data) {
+  let boards;
+  const boardName = req.body.boardName;
+  fs.readFile(BOARDS_FILE, function(err, data) {
     if (err) {
       console.error(err);
       process.exit(1);
     }
-    tabs = JSON.parse(data);
+    boards = JSON.parse(data);
     let found = false;
     var result;
-    for(let i=0; i < tabs.length; ++i){
-      if(tabs[i].name === tabName) {
+    for(let i=0; i < boards.length; ++i){
+      if(boards[i].name === boardName) {
         found = true;
         // NOTE: In a real implementation, we would likely rely on a database or
         // some other approach (e.g. UUIDs) to ensure a globally unique id. We'll
@@ -111,63 +90,27 @@ app.post('/api/comments', function(req, res) {
           text: req.body.comment.text,
           isCode: req.body.comment.isCode
         };
-        tabs[i].comments.push(newComment);
-        result = tabs[i].comments;
+        boards[i].comments.push(newComment);
+        result = boards[i].comments;
       }
     }
     if(!found){
-      tempTab = {"id":Date.now(), "name":tabName, "comments":[comment]};
-      tabs.push(tempTab);
-      fs.writeFile(TABS_FILE, JSON.stringify(tabs, null, 4), function(err) {
+      tempBoard = {"id":Date.now(), "name":boardName, "comments":[comment]};
+      boards.push(tempBoard);
+      fs.writeFile(BOARDS_FILE, JSON.stringify(boards, null, 4), function(err) {
         if (err) {
           console.error(err);
           process.exit(1);
         }
-      res.json(tempTab.comments);
+      res.json(tempBoard.comments);
       });
     }
-    fs.writeFile(TABS_FILE, JSON.stringify(tabs, null, 4), function(err) {
+    fs.writeFile(BOARDS_FILE, JSON.stringify(boards, null, 4), function(err) {
       if (err) {
         console.error(err);
         process.exit(1);
       }
       res.json(result);
-    });
-  });
-});
-
-app.get('/api/tabs', function(req, res) {
-  fs.readFile(TABS_FILE, function(err, data) {
-    if (err) {
-      console.error(err);
-      process.exit(1);
-    }
-    res.json(JSON.parse(data));
-  });
-});
-
-app.post('/api/tabs', function(req, res) {
-  fs.readFile(TABS_FILE, function(err, data) {
-    if (err) {
-      console.error(err);
-      process.exit(1);
-    }
-    let tabs = JSON.parse(data);
-    // NOTE: In a real implementation, we would likely rely on a database or
-    // some other approach (e.g. UUIDs) to ensure a globally unique id. We'll
-    // treat Date.now() as unique-enough for our purposes.
-    let newTab = {
-      id: Date.now(),
-      name: req.body.name,
-      comments: []
-    };
-    tabs.push(newTab);
-    fs.writeFile(TABS_FILE, JSON.stringify(tabs, null, 4), function(err) {
-      if (err) {
-        console.error(err);
-        process.exit(1);
-      }
-      res.json(tabs);
     });
   });
 });
