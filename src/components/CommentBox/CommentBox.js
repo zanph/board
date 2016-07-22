@@ -69,10 +69,10 @@ export class CommentBox extends React.Component {
        <div className={styles.content}>
             <Row>
               <Col xs={12}>
-                <h1 className={styles.padding}>Comments for board: {this.props.board}</h1>
+                {/* tutorial section should go here. */}
               </Col>
             </Row>
-            <Row>
+            <Row className={styles.commentList}>
               <Col xs={12}>
                 <CommentList data={this.state.data} />
               </Col>

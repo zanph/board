@@ -17,8 +17,8 @@ export class Landing extends React.Component {
         $('#landing_page').fadeIn();
     }
     postNewBoard () {
-        const board = Math.random().toString(36).replace(/([^a-z])+/g, '').substr(0,7);
-        console.log(board);
+        const crypto = require('crypto');
+        let board = crypto.randomBytes(12).toString('hex').substring(0,5);
         $.ajax({
             //how to pass this in via props??
             url: 'http://localhost:3001/api/board/new',
@@ -47,7 +47,7 @@ export class Landing extends React.Component {
             //an error occurred!
             console.error('no url provided!');
         }
-        push('/b/' + url);
+        push(url);
         $('#landing_page').fadeOut();
     }
 

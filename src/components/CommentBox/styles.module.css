@@ -22,3 +22,7 @@
   /*for debugging*/
   /*border: 1px dashed black;*/
 }
+
+.commentList {
+  margin: 0 8% 0 8%;
+}

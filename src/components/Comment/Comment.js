@@ -69,9 +69,9 @@ export class Comment extends React.Component {
     //  }
       return(
          <div className={styles.comment}>
-            <h2 className="commentAuthor">
+            <h4 className="commentAuthor">
                {this.props.author}
-            </h2>
+            </h4>
             <div className={styles.commentBlock}>
               {commentBody}
               {/*highlightIcon*/}

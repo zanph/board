@@ -14,6 +14,7 @@ in a single server soon).
 * `react-dom`
 * `jquery` (to maybe be removed)
 * `react-bootstrap` for styling and layout
+* `highlight.js` for syntax highlighting
 
 Detailed instructions for development environment will follow
 

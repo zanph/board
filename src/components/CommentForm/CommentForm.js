@@ -79,9 +79,10 @@ export class CommentForm extends React.Component{
                value={this.state.author}
                onChange={this.handleAuthorChange.bind(this)} 
                disabled={!this.state.loggedIn}
+               id="user_id_display"
                />
             <HelpBlock id="user_id_note">
-              Your ID is set automatically. Feel free to change it!
+              Your ID is set automatically. Feel free to change it (once I implement that)!
             </HelpBlock>
             <InputGroup>
                 <InputGroup.Button>
@@ -114,11 +115,15 @@ export class CommentForm extends React.Component{
                 <FormControl componentClass="textarea" 
                 placeholder="Enter some code!" 
                 onChange={this.handleExpandedTextChange.bind(this)}/>
-              <DropdownButton bsStyle="default" title="Choose language" id="language-choice">
+                {/*need to implement the dropdown logic */}
+              <DropdownButton bsStyle="default" title="Choose language" 
+                id="language-choice"
+                disabled='true'
+                >
                 <MenuItem eventKey="1">temp</MenuItem> 
                 {/* make a const list of supported hljs langs and do langs.map here... */}
               </DropdownButton>
-              <Button bsStyle="info" id="preview-post">
+              <Button bsStyle="info" id="preview-post" disabled='true'>
                 Preview
               </Button>
               <Button bsStyle="primary" type="submit" value="Post">
