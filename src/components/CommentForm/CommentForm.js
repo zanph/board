@@ -4,6 +4,7 @@ import React, { PropTypes as T } from 'react'
 import styles from './styles.module.css'
 import { FormGroup, FormControl, HelpBlock, ControlLabel, 
   InputGroup, Button, DropdownButton, MenuItem } from 'react-bootstrap'
+import $ from 'jquery'
 
 
 export class CommentForm extends React.Component{
@@ -19,12 +20,16 @@ export class CommentForm extends React.Component{
         text  : '',
         expandedText: '', //for the expanded editor
         showCodeBox: false,
-        loggedIn: false //maybe this should just be 'name set'
+        idLocked: false //maybe this should just be 'name set'
      }
    }
 
    handleAuthorChange (e) {
       this.setState({author: e.target.value});
+   }
+
+   lockUserID () {
+     this.setState({ idLocked: true });
    }
 
    handleTextChange (e) {
@@ -74,15 +79,23 @@ export class CommentForm extends React.Component{
           >
           <FormGroup controlId="commentEntry">
             <ControlLabel>Your id</ControlLabel>
-            <FormControl type="text"
+            <div className={styles.idForm}>
+              <FormControl type="text"
                placeholder="Your Name"
                value={this.state.author}
                onChange={this.handleAuthorChange.bind(this)} 
-               disabled={!this.state.loggedIn}
+               disabled={this.state.idLocked}
                id="user_id_display"
-               />
+                 />
+              <Button className={styles.editID}
+                onClick={this.lockUserID.bind(this)}
+                disabled={this.state.idLocked}
+                >
+                <i className={"fa fa-check"} aria-hidden="true"></i>
+              </Button>
+            </div>
             <HelpBlock id="user_id_note">
-              Your ID is set automatically. Feel free to change it (once I implement that)!
+              Your ID is set automatically. You can change it once per session.
             </HelpBlock>
             <InputGroup>
                 <InputGroup.Button>
