@@ -23,6 +23,10 @@
   /*border: 1px dashed black;*/
 }
 
+.shareMessage {
+  margin: 20px 8% 20px 8%;
+}
+
 .commentList {
   margin: 0 8% 0 8%;
 }

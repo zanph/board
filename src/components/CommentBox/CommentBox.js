@@ -4,7 +4,7 @@ import $ from 'jquery' //todo remove jquery dependency, see note in handleCommen
 import styles from './styles.module.css'
 import CommentList from 'components/CommentList/CommentList'
 import CommentForm from 'components/CommentForm/CommentForm'
-import {Grid, Row, Col} from 'react-bootstrap'
+import {Grid, Row, Col, Alert} from 'react-bootstrap'
 
 
 export class CommentBox extends React.Component {
@@ -12,8 +12,9 @@ export class CommentBox extends React.Component {
      super(props);
 
      this.state = {
-        data : []
-        }
+        data : [],
+        alertVisible: true
+      }
    }
 
    handleCommentSubmit (comment) {
@@ -59,17 +60,27 @@ export class CommentBox extends React.Component {
       });
    }
 
+   handleAlertDismiss () {
+     this.setState({ alertVisible: false });
+   }
+
    componentDidMount () {
       this.loadCommentsFromServer();
       setInterval(this.loadCommentsFromServer.bind(this), this.props.pollInterval);
    }
 
    render() {
+     let hideAlert = this.state.alertVisible ? false : true;
      return(
        <div className={styles.content}>
-            <Row>
+            <Row className={styles.shareMessage} hidden={hideAlert}>
               <Col xs={12}>
-                {/* tutorial section should go here. */}
+                  <Alert bsStyle="info" onDismiss={this.handleAlertDismiss.bind(this)}>
+                    <span>Want to share your board with classmates or 
+                    friends? Give them this link!
+                    </span>
+                    {/* link logic goes here */}
+                  </Alert>
               </Col>
             </Row>
             <Row className={styles.commentList}>

@@ -63,6 +63,102 @@
                 "author": "anon-2311",
                 "text": "```html\n<div class=\"myClass\">\n  <span id=\"test\"> this is sample text </span>\n</div>\n```",
                 "isCode": "false"
+            },
+            {
+                "id": 1469475065896,
+                "author": "anon-e226",
+                "text": "![Minion](https://octodex.github.com/images/minion.png)",
+                "isCode": "false"
+            },
+            {
+                "id": 1469475145221,
+                "author": "anon-e226",
+                "text": "![gif](http://s208.photobucket.com/user/rockman7797/media/sample.gif.html)",
+                "isCode": "false"
+            }
+        ]
+    },
+    {
+        "id": 1469476166496,
+        "name": "100d0",
+        "comments": [
+            {
+                "id": 1469476304056,
+                "author": "preston",
+                "text": "```c\n/*how does anyone read this*/\nchar * const (*(* const bar)[5])(int )\n```",
+                "isCode": "false"
+            },
+            {
+                "id": 1469476321172,
+                "author": "preston",
+                "text": "```c\n//how does anyone read this\nchar * const (*(* const bar)[5])(int )\n```",
+                "isCode": "false"
+            },
+            {
+                "id": 1469476328803,
+                "author": "preston",
+                "text": "```c++\n//how does anyone read this\nchar * const (*(* const bar)[5])(int )\n```",
+                "isCode": "false"
+            },
+            {
+                "id": 1469476351595,
+                "author": "preston",
+                "text": "```c++\n//how does anyone read this\nchar * const (*(* const bar)[5])(int );\n```",
+                "isCode": "false"
+            },
+            {
+                "id": 1469476416873,
+                "author": "preston",
+                "text": "```c++\n//how does anyone read this\nfor (const auto& item: map) {\n  std::cout << static_cast<const foo * const> (item.first->func());\n```",
+                "isCode": "false"
+            },
+            {
+                "id": 1469476540378,
+                "author": "preston",
+                "text": "```python\n(lambda _, __, ___, ____, _____, ______, _______, ________:\n    getattr(\n        __import__(True.__class__.__name__[_] + [].__class__.__name__[__]),\n        ().__class__.__eq__.__class__.__name__[:__] +\n        ().__iter__().__class__.__name__[_____:________]\n    )(\n        _, (lambda _, __, ___: _(_, __, ___))(\n            lambda _, __, ___:\n                chr(___ % __) + _(_, __, ___ // __) if ___ else\n                (lambda: _).func_code.co_lnotab,\n            _ << ________,\n            (((_____ << ____) + _) << ((___ << _____) - ___)) + (((((___ << __)\n            - _) << ___) + _) << ((_____ << ____) + (_ << _))) + (((_______ <<\n            __) - _) << (((((_ << ___) + _)) << ___) + (_ << _))) + (((_______\n            << ___) + _) << ((_ << ______) + _)) + (((_______ << ____) - _) <<\n            ((_______ << ___))) + (((_ << ____) - _) << ((((___ << __) + _) <<\n            __) - _)) - (_______ << ((((___ << __) - _) << __) + _)) + (_______\n            << (((((_ << ___) + _)) << __))) - ((((((_ << ___) + _)) << __) +\n            _) << ((((___ << __) + _) << _))) + (((_______ << __) - _) <<\n            (((((_ << ___) + _)) << _))) + (((___ << ___) + _) << ((_____ <<\n            _))) + (_____ << ______) + (_ << ___)\n        )\n    )\n)(\n    *(lambda _, __, ___: _(_, __, ___))(\n        (lambda _, __, ___:\n            [__(___[(lambda: _).func_code.co_nlocals])] +\n            _(_, __, ___[(lambda _: _).func_code.co_nlocals:]) if ___ else []\n        ),\n        lambda _: _.func_code.co_argcount,\n        (\n            lambda _: _,\n            lambda _, __: _,\n            lambda _, __, ___: _,\n            lambda _, __, ___, ____: _,\n            lambda _, __, ___, ____, _____: _,\n            lambda _, __, ___, ____, _____, ______: _,\n            lambda _, __, ___, ____, _____, ______, _______: _,\n            lambda _, __, ___, ____, _____, ______, _______, ________: _\n        )\n    )\n)\n```",
+                "isCode": "false"
+            },
+            {
+                "id": 1469476610321,
+                "author": "preston",
+                "text": "(lambda _, __, ___, ____, _____, ______, _______, ________:\n    getattr(\n        __import__(True.__class__.__name__[_] + [].__class__.__name__[__]),\n        ().__class__.__eq__.__class__.__name__[:__] +\n        ().__iter__().__class__.__name__[_____:________]\n    )(\n        _, (lambda _, __, ___: _(_, __, ___))(\n            lambda _, __, ___:\n                chr(___ % __) + _(_, __, ___ // __) if ___ else\n                (lambda: _).func_code.co_lnotab,\n            _ << ________,\n            (((_____ << ____) + _) << ((___ << _____) - ___)) + (((((___ << __)\n            - _) << ___) + _) << ((_____ << ____) + (_ << _))) + (((_______ <<\n            __) - _) << (((((_ << ___) + _)) << ___) + (_ << _))) + (((_______\n            << ___) + _) << ((_ << ______) + _)) + (((_______ << ____) - _) <<\n            ((_______ << ___))) + (((_ << ____) - _) << ((((___ << __) + _) <<\n            __) - _)) - (_______ << ((((___ << __) - _) << __) + _)) + (_______\n            << (((((_ << ___) + _)) << __))) - ((((((_ << ___) + _)) << __) +\n            _) << ((((___ << __) + _) << _))) + (((_______ << __) - _) <<\n            (((((_ << ___) + _)) << _))) + (((___ << ___) + _) << ((_____ <<\n            _))) + (_____ << ______) + (_ << ___)\n        )\n    )\n)(\n    *(lambda _, __, ___: _(_, __, ___))(\n        (lambda _, __, ___:\n            [__(___[(lambda: _).func_code.co_nlocals])] +\n            _(_, __, ___[(lambda _: _).func_code.co_nlocals:]) if ___ else []\n        ),\n        lambda _: _.func_code.co_argcount,\n        (\n            lambda _: _,\n            lambda _, __: _,\n            lambda _, __, ___: _,\n            lambda _, __, ___, ____: _,\n            lambda _, __, ___, ____, _____: _,\n            lambda _, __, ___, ____, _____, ______: _,\n            lambda _, __, ___, ____, _____, ______, _______: _,\n            lambda _, __, ___, ____, _____, ______, _______, ________: _\n        )\n    )\n)",
+                "isCode": "true"
+            }
+        ]
+    },
+    {
+        "id": 1469479442568,
+        "name": "e5164",
+        "comments": [
+            {
+                "id": 1469479444307,
+                "author": "anon-de1f",
+                "text": "test",
+                "isCode": "false"
+            },
+            {
+                "id": 1469479478750,
+                "author": "anon-b3fa",
+                "text": "test",
+                "isCode": "false"
+            },
+            {
+                "id": 1469479480612,
+                "author": "anon-b3fa",
+                "text": "help",
+                "isCode": "false"
+            },
+            {
+                "id": 1469479482954,
+                "author": "anon-b3fa",
+                "text": "`markdown`",
+                "isCode": "false"
+            },
+            {
+                "id": 1469479525333,
+                "author": "anon-b3fa",
+                "text": "```c++\nthis->(dynamic_cast<other_class>(getInstance()));\n```",
+                "isCode": "false"
             }
         ]
     }

@@ -136,14 +136,6 @@ export class CommentForm extends React.Component{
                 <FormControl componentClass="textarea" 
                 placeholder={this.state.isCode ? "Enter some code!" : "Enter some markdown!"} 
                 onChange={this.handleExpandedTextChange.bind(this)}/>
-                {/*need to implement the dropdown logic */}
-              <DropdownButton bsStyle="default" title="Choose language" 
-                id="language-choice"
-                disabled='true'
-                >
-                <MenuItem eventKey="1">temp</MenuItem> 
-                {/* make a const list of supported hljs langs and do langs.map here... */}
-              </DropdownButton>
               <Button id="preview-post" disabled='true'>
                 Preview
               </Button>

@@ -12,49 +12,64 @@ export class Comment extends React.Component {
     super(props);
 
     this.state = {
-      highlighted: false
+      highlighted: false,
+      mark       : new Remarkable({
+                        highlight: function (str, lang) {
+                        if (lang && hljs.getLanguage(lang)) {
+                          try {
+                            return hljs.highlight(lang, str).value;
+                          } catch (err) {}
+                        }
+
+                        try {
+                          return hljs.highlightAuto(str).value;
+                        } catch (err) {}
+
+                        return ''; // use external default escaping
+                      }
+                      })
     }
   }
-
+  //should the renderer be a global so it is not instantiated each time? 
   codeBlock () {
     //setup the default highlighting function for Remarkable
-    let md = new Remarkable({
-      highlight: function (str, lang) {
-      if (lang && hljs.getLanguage(lang)) {
-        try {
-          return hljs.highlight(lang, str).value;
-        } catch (err) {}
-      }
+    // let md = new Remarkable({
+    //   highlight: function (str, lang) {
+    //   if (lang && hljs.getLanguage(lang)) {
+    //     try {
+    //       return hljs.highlight(lang, str).value;
+    //     } catch (err) {}
+    //   }
 
-      try {
-        return hljs.highlightAuto(str).value;
-      } catch (err) {}
+    //   try {
+    //     return hljs.highlightAuto(str).value;
+    //   } catch (err) {}
 
-      return ''; // use external default escaping
-    }
-    });
+    //   return ''; // use external default escaping
+    // }
+    // });
     //todo use this.props.lang instead of hardcoding
-    let code = md.options.highlight(this.props.children.toString());
+    let code = this.state.mark.options.highlight(this.props.children.toString());
     return { __html: code };
   }
 
    rawMarkup () {
-      let md = new Remarkable({
-        highlight: function (str, lang) {
-        if (lang && hljs.getLanguage(lang)) {
-          try {
-            return hljs.highlight(lang, str).value;
-          } catch (err) {}
-        }
+    //   let md = new Remarkable({
+    //     highlight: function (str, lang) {
+    //     if (lang && hljs.getLanguage(lang)) {
+    //       try {
+    //         return hljs.highlight(lang, str).value;
+    //       } catch (err) {}
+    //     }
 
-        try {
-          return hljs.highlightAuto(str).value;
-        } catch (err) {}
+    //     try {
+    //       return hljs.highlightAuto(str).value;
+    //     } catch (err) {}
 
-        return ''; // use external default escaping
-      }
-    });
-      let raw = md.render(this.props.children.toString(), {sanitize: true});
+    //     return ''; // use external default escaping
+    //   }
+    // });
+      let raw = this.state.mark.render(this.props.children.toString(), {sanitize: true});
       return { __html: raw };
    }
    render() {
