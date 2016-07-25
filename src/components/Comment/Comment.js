@@ -18,7 +18,7 @@ export class Comment extends React.Component {
 
   codeBlock () {
     //setup the default highlighting function for Remarkable
-    var md = new Remarkable({
+    let md = new Remarkable({
       highlight: function (str, lang) {
       if (lang && hljs.getLanguage(lang)) {
         try {
@@ -39,7 +39,21 @@ export class Comment extends React.Component {
   }
 
    rawMarkup () {
-      let md = new Remarkable();
+      let md = new Remarkable({
+        highlight: function (str, lang) {
+        if (lang && hljs.getLanguage(lang)) {
+          try {
+            return hljs.highlight(lang, str).value;
+          } catch (err) {}
+        }
+
+        try {
+          return hljs.highlightAuto(str).value;
+        } catch (err) {}
+
+        return ''; // use external default escaping
+      }
+    });
       let raw = md.render(this.props.children.toString(), {sanitize: true});
       return { __html: raw };
    }

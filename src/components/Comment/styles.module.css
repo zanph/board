@@ -15,7 +15,8 @@
     flex-direction: row;
 }
 
-.codeBlock {
+.codeBlock,
+.commentBlock code {
     /*so a gigantic bar isn't covering the whole page. maybe handle this another way...*/
     /*stack overflow-ish font appearance*/
     /*max-width: 95%;*/
