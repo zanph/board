@@ -10,7 +10,7 @@ export const makeMainRoutes = () => {
   return (
     <Route path="/" component={Main}>
       <IndexRoute component={Landing} />
-        <Route path=":boardID" component={Container} />
+      <Route path=":boardID" component={Container} />
     </Route>
   )
 }

@@ -34,7 +34,7 @@ export class Comment extends React.Component {
     }
     });
     //todo use this.props.lang instead of hardcoding
-    let code = md.options.highlight(this.props.children.toString(), "c++");
+    let code = md.options.highlight(this.props.children.toString());
     return { __html: code };
   }
 
@@ -48,6 +48,8 @@ export class Comment extends React.Component {
      //if the comment is code, render it as a code block
      //i.e. use highlightjs classes
      if (this.props.code) {
+       //todo: get language from dropbox
+       //const lang =
        commentBody = 
         <code className={styles.codeBlock + " hljs"} dangerouslySetInnerHTML={this.codeBlock()} />
      }

@@ -16,11 +16,12 @@ export class CommentForm extends React.Component{
       tempName = buffer.toString('hex');
      });
      this.state = {
-        author: 'anon-'+tempName,
-        text  : '',
+        author:       'anon-'+tempName,
+        text  :       '',
         expandedText: '', //for the expanded editor
-        showCodeBox: false,
-        idLocked: false //maybe this should just be 'name set'
+        showCodeBox:  false,
+        idLocked:     false, //maybe this should just be 'name set'
+        isCode:       false
      }
    }
 
@@ -57,7 +58,7 @@ export class CommentForm extends React.Component{
       //todo: add lang value to this function call?
       //todo: if(code button is toggled) isCode: true;
       console.log(text);
-      this.props.onCommentSubmit({author: author, text: text, isCode: true});
+      this.props.onCommentSubmit({author: author, text: text, isCode: this.state.isCode});
       this.setState({expandedText: ''});
    }
 
@@ -71,6 +72,13 @@ export class CommentForm extends React.Component{
      //toggle expanded editor
      this.setState({ showCodeBox: !(this.state.showCodeBox)});
    }
+
+   handleToggleCode () {
+     this.setState({
+       isCode: !(this.state.isCode)
+     });
+   }
+   
    render () {
       return(
         <div className={styles.commentFormContainer}>
@@ -126,7 +134,7 @@ export class CommentForm extends React.Component{
               >
                 <ControlLabel>Expanded Editor</ControlLabel>
                 <FormControl componentClass="textarea" 
-                placeholder="Enter some code!" 
+                placeholder={this.state.isCode ? "Enter some code!" : "Enter some markdown!"} 
                 onChange={this.handleExpandedTextChange.bind(this)}/>
                 {/*need to implement the dropdown logic */}
               <DropdownButton bsStyle="default" title="Choose language" 
@@ -136,8 +144,11 @@ export class CommentForm extends React.Component{
                 <MenuItem eventKey="1">temp</MenuItem> 
                 {/* make a const list of supported hljs langs and do langs.map here... */}
               </DropdownButton>
-              <Button bsStyle="info" id="preview-post" disabled='true'>
+              <Button id="preview-post" disabled='true'>
                 Preview
+              </Button>
+              <Button bsStyle="info" onClick={this.handleToggleCode.bind(this)}>
+                {this.state.isCode ? 'Code' : 'Markdown'}
               </Button>
               <Button bsStyle="primary" type="submit" value="Post">
                 Post
