@@ -3,8 +3,8 @@ Collaborative, markdown-enabled chat in the browser, built with React.
 
 ## Getting Started
 Requires `node` (and `npm`).
-To run, `npm install` and then `node server.js` and `npm start` (will combine `express` and `react-router`
-in a single server soon).
+To run, `npm install` and then `node server.js` and `npm run dev` (will combine `express` and `react-router`
+in a single server soon). Currently only the dev server is configured; planning on setting up a production environment shortly.
 ### Dependencies
 * `classnames`
 * `express` (api endpoints)
